@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Francois+One&family=Heebo&family=Oswald:wght@700&family=PT+Sans:wght@400;700&family=Raleway:wght@400;500;700&display=swap');
+
+:root {
+    --limite_ancho_inferior: 750px;
+    --limite_ancho_superior: 1300px;
+
+    --ivory: #fffff0;
+    --verdegris: #48A9A6;
+    --eerie_black: #222222;
+    --honey_yellow: #FFB30F;
+    --eerie_black_2: #292929;
+
+    /* --charcoal: #2E4756;
+    --gunmetal: #16262E;
+    --y_in_mn_blue: #3A506B;
+    --space_cadete: #1C2541;
+    --raisin_black: #1E1E24;
+    --lapiz_lazuli: #1C5D99;
+    --blanco_pantalla : #d6e5e5;
+
+    --fire_opal: #F15946;
+    --gold_metalic: #DEB841;
+    --coral: #FF784F;
+    --cedar_chest: #DB504A;
+    --paradise_pink: #E5446D;
+    --brink_pink: #FF4D80;
+    --ruby: #D81159;
+    --orange_yellow_crayola: #F0CF65;
+    --sunglow: #FCCA46; */
+}
+
+* {
+    padding: 0; margin: 0;
+    box-sizing: border-box;
+}
+
+a { 
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--honey_yellow);
+}
+
+h1,h2,h3 { 
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+}
+
+body {
+    color: var(--ivory);
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(var(--limite_ancho_inferior) * 0.015, 1.5vw, var(--limite_ancho_superior) * 0.015);
+}
+
+body, .contenedor, .bienvenida {
+    width: 100vw; min-height: 100vh;
+}
+
+/** PÁGINA DE BIENVENIDA **/
+.bienvenida {
+    padding: 0px 25px;
+    overflow: hidden;
+    background-color: var(--eerie_black);
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bienvenida--cabezera {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+}
+.bienvenida--cabezera::before{
+    content: '';
+
+    width: 100%;
+    height: 2px;
+    bottom: -20px;
+    display: block;
+    position: absolute;
+    border-radius: 10px;
+    background-color: var(--ivory);
+    animation: barra_superior 1.5s infinite alternate linear;
+}
+.bienvenida--cabezera::after{
+    content: '';
+
+    width: 80%;
+    height: 2px;
+    bottom: -28px;
+    display: block;
+    position: absolute;
+    border-radius: 10px;
+    background-color: var(--ivory);
+    animation: barra_inferior 1s 800ms infinite alternate linear;
+}
+@keyframes barra_superior {
+    from { width: 100%;}
+    to {width: 95%;}
+}
+@keyframes barra_inferior {
+    from { width: 80%;}
+    to {width: 75%;}
+}
+
+.bienvenida--cabezera h1 {
+    text-transform: uppercase;
+    font-size: clamp(var(--limite_ancho_inferior) * 0.15, 15vw, var(--limite_ancho_superior) * 0.15);
+}
+.bienvenida--cabezera h1::first-letter {
+    color: var(--verdegris);
+}
+.bienvenida--cabezera span {
+    letter-spacing: 0.2rem;
+    color: var(--verdegris);
+    text-transform: uppercase;
+    font-size: clamp(var(--limite_ancho_inferior) * 0.03, 3vw, var(--limite_ancho_superior) * 0.03);
+}
+
+.bienvenida--informacion{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bienvenida--informacion p:first-child {
+    font-weight: 500;
+    position: relative;
+    font-size: clamp(var(--limite_ancho_inferior) * 0.02, 2vw, var(--limite_ancho_superior) * 0.02);
+}
+.bienvenida--informacion p:last-child a{
+    color: var(--honey_yellow)
+}
+
+/* Animación engranajes */
+.bienvenida--informacion--engranajes {
+    margin: 25px;
+    position: relative;
+}
+.bienvenida--informacion--engranajes img{
+    top: 0; left: 50%;
+    position: absolute
+}
+.bienvenida--informacion--engranajes img:first-child {
+    left: 0;
+    padding-top: 40%;
+    position: relative;
+    transform-origin: 50% 64.5%;
+    transform: translateX(-50%);
+    width: clamp(var(--limite_ancho_inferior) * 0.06, 6vw, var(--limite_ancho_superior) * 0.06);
+    animation: primer_engranaje 6s infinite linear forwards;
+}
+.bienvenida--informacion--engranajes img:nth-child(2) {
+    animation: segundo_engranaje 4s infinite linear forwards;
+    width: clamp(var(--limite_ancho_inferior) * 0.04, 4vw, var(--limite_ancho_superior) * 0.04);
+}
+.bienvenida--informacion--engranajes img:last-child {
+    transform: translateY(200%) translateX(50%);
+    animation: tercer_engranaje 3s infinite linear forwards;
+    width: clamp(var(--limite_ancho_inferior) * 0.025, 2.5vw, var(--limite_ancho_superior) * 0.025);
+}
+
+@keyframes primer_engranaje {
+    from { transform: translateX(-50%) rotate(0deg); }
+    to { transform: translateX(-50%) rotate(360deg); }
+}
+
+@keyframes segundo_engranaje {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes tercer_engranaje {
+    from { transform: translateY(200%) translateX(50%) rotate(0deg); }
+    to { transform: translateY(200%) translateX(50%) rotate(360deg); }
+}
+
+
+/** CATÁLOGO DE PRODUCTOS **/
+.catalogo_productos {
+    width: 100vw;
+    display: flex;
+    padding: 0px 25px;
+    padding-top: 50px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--eerie_black_2);
+}
+
+.catalogo_productos h2 {
+    font-size: clamp(var(--limite_ancho_inferior) * 0.02, 2vw, var(--limite_ancho_superior) * 0.02);
+    margin-bottom: 15px;
+}
+
+.catalogo_productos--tarjetas {
+    margin: 50px;
+    width: 100%;
+}
