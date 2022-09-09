@@ -33,7 +33,7 @@
 .tarjeta {
     padding: 40px 15px;
     border-radius: 20px;
-    border: 2px solid var(--eerie_black);
+    border: 2px solid var(--blue_black);
     background-color: none;
     transition: background-color 0.3s ease-in-out;
 
@@ -43,7 +43,7 @@
     justify-content: space-evenly;
 }
 .tarjeta:hover {
-    background-color: var(--eerie_black);
+    background-color: var(--blue_black);
 }
 
 .tarjeta img {

@@ -4,12 +4,7 @@
     --limite_ancho_inferior: 750px;
     --limite_ancho_superior: 1300px;
 
-    --blue_alice: #EFF7FF;
-    --night_blue: #163f5c;
-    --blue_black: #152841;
-
     --ivory: #fffff0;
-    --ivory_2: #e0e0d4;
     --verdegris: #48A9A6;
     --eerie_black: #222222;
     --honey_yellow: #FFB30F;
@@ -52,7 +47,7 @@ h1,h2,h3 {
 }
 
 body {
-    color: var(--eerie_black_2);
+    color: var(--ivory);
     font-family: 'Raleway', sans-serif;
     font-size: clamp(var(--limite_ancho_inferior) * 0.015, 1.5vw, var(--limite_ancho_superior) * 0.015);
 }
@@ -65,7 +60,7 @@ body, .contenedor, .bienvenida {
 .bienvenida {
     padding: 0px 25px;
     overflow: hidden;
-    background-color: var(--mini_cream);
+    background-color: var(--eerie_black);
     
     display: flex;
     align-items: center;
@@ -88,7 +83,7 @@ body, .contenedor, .bienvenida {
     display: block;
     position: absolute;
     border-radius: 10px;
-    background-color: var(--eerie_black_2);
+    background-color: var(--ivory);
     animation: barra_superior 1.5s infinite alternate linear;
 }
 .bienvenida--cabezera::after{
@@ -100,7 +95,7 @@ body, .contenedor, .bienvenida {
     display: block;
     position: absolute;
     border-radius: 10px;
-    background-color: var(--eerie_black_2);
+    background-color: var(--ivory);
     animation: barra_inferior 1s 800ms infinite alternate linear;
 }
 @keyframes barra_superior {
@@ -194,8 +189,7 @@ body, .contenedor, .bienvenida {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    color: var(--blue_alice);
-    background-color: var(--night_blue);
+    background-color: var(--eerie_black_2);
 }
 
 .catalogo_productos h2 {
