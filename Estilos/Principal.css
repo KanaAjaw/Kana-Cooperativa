@@ -62,7 +62,7 @@ body, .contenedor, .bienvenida {
 }
 
 /** PÁGINA DE BIENVENIDA **/
-.bienvenida {
+.bienvenida, #contenedor {
     padding: 0px 25px;
     overflow: hidden;
     background-color: var(--mini_cream);
