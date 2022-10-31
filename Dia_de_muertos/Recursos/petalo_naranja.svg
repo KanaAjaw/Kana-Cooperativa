@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="12.751153mm"
+   height="6.1340032mm"
+   viewBox="0 0 12.751153 6.1340031"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
+   sodipodi:docname="petalo_naranja.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.31558955"
+     inkscape:cx="283.59621"
+     inkscape:cy="404.00578"
+     inkscape:window-width="840"
+     inkscape:window-height="997"
+     inkscape:window-x="840"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer31" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-77.85109,-232.31796)">
+    <g
+       inkscape:groupmode="layer"
+       id="layer33"
+       inkscape:label="Flor 2"
+       transform="translate(-125.30504,236.78412)">
+      <g
+         inkscape:groupmode="layer"
+         id="layer31"
+         inkscape:label="Cempasuchil"
+         transform="matrix(0.44097221,0,0,-0.44097221,-57.158708,311.25221)">
+        <g
+           id="g1938"
+           transform="matrix(0.80000001,0,0,0.80000001,619.23628,713.70284)"
+           style="display:inline">
+          <path
+             d="M 0,0 C -14.981,-16.367 -23.573,-16.879 -36.145,-11.539 -30.155,1.782 -20.661,6.34 0,0"
+             style="fill:#feaa7c;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path1940" />
+        </g>
+        <g
+           id="g1942"
+           transform="matrix(0.80000001,0,0,0.80000001,615.93436,712.80644)"
+           style="display:inline">
+          <path
+             d="M 0,0 C -11.706,-1.557 -23.003,-3.862 -29.507,-9.201 -21.549,-5.581 -11.675,-3.401 0,0"
+             style="fill:#fde3cb;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path1944" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -79,6 +79,9 @@ body, .contenedor, .bienvenida {
     align-items: center;
     flex-direction: column;
 }
+.bienvenida--cabezera img {
+    width: min(45vw, 0.45 * var(--limite_ancho_superior))
+}
 .bienvenida--cabezera::before{
     content: '';
 
