@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap');
 
 * {
     margin: 0;
@@ -23,17 +24,18 @@ a {
 }
 html, body, .contenedor, .fondo_paginas{
     width: 100vw;
-    overflow-x: hidden;
     min-height: 100vh;
+    overflow-x: hidden;
     color: var(--rojo-claro);
-    font-family: 'Life Savers', sans-serif;
+    font-family: 'Dosis', sans-serif;
 }
 
 h1, h2, h3{
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: 800;
     color: white;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Life Savers', sans-serif;
 }
 h1 {
     font-size: min(6.8vw, 0.068 * var(--maximo_ancho));
@@ -42,11 +44,18 @@ h2 {
     font-size: min(5vw, 0.05 * var(--maximo_ancho));
 }
 h4, h5 {
+    font-family: 'Life Savers', sans-serif;
     color: var(--rojo-claro);
     font-weight: 800;
 }
 h4 {
     text-align: center;
+}
+
+.delimitador {
+    width: 100%;
+    margin: auto;
+    max-width: calc( var(--maximo_ancho) + 600px );
 }
 
 .pagina {
@@ -103,49 +112,153 @@ h4 {
     transform: translateY(-100%) translateX(-50%);
 }
 .primer_seccion--header--flores img:nth-child(2) {
-    bottom: -50%;
     position: absolute;
     width: min(9vw, 0.09 * var(--maximo_ancho));
 }
-.primer_seccion--header .primer_seccion--header--flores:first-child img:last-child {
-    transform: translateY(-50%);
+.primer_seccion--header--flores:first-child img:nth-child(2) {
+    bottom: -50%; left: 50%; 
 }
-.primer_seccion--header .primer_seccion--header--flores:nth-child(3) img:last-child{
-    left: -50%;
-    transform: translateY(-50%) translateX(50%);
+.primer_seccion--header--flores:last-child img:nth-child(2){
+    bottom: -50%; left: 0;
 }
 #logotipo {
     width: min(35vw, 0.35 * var(--maximo_ancho));
 }
 
-.primer_seccion--caida_petalos {
-    height: min(24vw, 0.24 * var(--maximo_ancho)); width: 100%;
-    position: relative;
-}
-.primer_seccion--caida_petalos img{
-    width: 100%;
+.primer_seccion--header--flores div {
+    top: 120%; left: 0;
     position: absolute;
 }
 
+.caida_petalos {
+    height: min(24vw, 0.24 * var(--maximo_ancho)); width: 100%;
+    position: relative;
+}
+.caida_petalos img{
+    left: 50%;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(-50%);
+    max-width: calc(var(--maximo_ancho) + 300px);
+    position: absolute;
+}
+#petalo_1 {
+    animation: animacion_petalos 3.5s infinite linear;
+}
+#petalo_2 {
+    animation: animacion_petalos 3.0s 1600ms infinite linear;
+}
+#petalo_3 {
+    animation: animacion_petalos 2.5s 300ms infinite linear;
+}
+#petalo_4 {
+    animation: animacion_petalos 3.5s 425ms infinite linear;
+}
+#petalo_5 {
+    animation: animacion_petalos 2.5s 900ms infinite linear;
+}
+#petalo_6 {
+    animation: animacion_petalos 2.5s 200ms infinite linear;
+}
+#petalo_7 {
+    animation: animacion_petalos 3.0s 1500ms infinite linear;
+}
+#petalo_8 {
+    animation: animacion_petalos 2.5s 1500ms infinite linear;
+}
+#petalo_9 {
+    animation: animacion_petalos 3.5s 750ms infinite linear;
+}
 
-.presentacion {
+@keyframes animacion_petalos {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(0px);
+    }
+    20% {
+        opacity: 1;
+    }
+    80%{
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(min(40vw, 0.40 * var(--maximo_ancho)));
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(0px);
+    }
+}
+
+
+
+.calaverita {
     font-weight: 400;
     color: var(--rojo-claro);
 }
-.presentacion--titulo {
+.calaverita--titulo {
     display: flex;
     padding: 15px 0px;
     justify-content: space-evenly;
     align-items: center;
 }
-.presentacion--titulo .presentacion--titulo--flores:last-child {
+.calaverita--titulo .calaverita--titulo--flores:last-child {
     transform: rotate(180deg);
 }
-.presentacion--titulo--flores {
+.calaverita--titulo--flores {
     width: min(17vw, 0.17 * var(--maximo_ancho));
 }
-.presentacion--titulo h1 {
+.calaverita--titulo h1 {
     max-width: 225px;
+    font-size: min(4.5vw, 0.045 * var(--maximo_ancho));
+}
+.calaverita .texto {
+    height: 200px;
+    display: block;
+    position: relative;
+    font-style: italic;
+    text-align: center;
+    overflow-y: hidden;
+    font-family: 'Dosis', sans-serif;
+    transition: height 500ms ease-in-out;
+}
+.calaverita .texto span {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 800;
+    color: white;
+}
+
+#expandir {
+    display: none;
+}
+#expandir:checked + p {
+    height: 100%;
+}
+#expandir:checked ~ .expandir_calaverita .expandido {
+    display: block;
+}
+#expandir:checked ~.expandir_calaverita .colapsado {
+    display: none;
+}
+.expandir_calaverita span {
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+}
+.expandir_calaverita label {
+    color:wheat;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.expandido {
+    display: none;
 }
 
 /*
@@ -158,6 +271,9 @@ h4 {
     padding-bottom: 20px
 }
 
+.segunda_seccion .parrafo .texto {
+    text-align: center;
+}
 .parrafo h2{
     position: relative;
 }
@@ -173,13 +289,16 @@ h4 {
 */
 .tercer_parrafo h2 img {
     top: -15%;
-    width: min(25vw, 0.25 * var(--maximo_ancho));
+    width: min(28vw, 0.28 * var(--maximo_ancho));
     transform: translateY(-15%) translateX(150%);
     position: absolute;
 }
 .tercer_parrafo .texto {
     margin: 0 15px;
     max-width: min(70vw, 0.70 * var(--maximo_ancho));
+}
+.tercer_parrafo .texto span {
+    color: wheat;
 }
 
 .tercer_seccion div:nth-child(2) img {
@@ -214,6 +333,36 @@ h4 {
 }
 
 /*
+    Cuarta página
+*/
+.pagina_cuarta {
+    padding: 5px 0px;
+}
+.instagram {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+.cuarta_seccion img {
+    width: 100%;
+}
+
+.cuarta_seccion .texto {
+    margin: auto;
+    color: wheat;
+    max-width: calc( var(--maximo_ancho) + 100px );
+}
+
+.cuarta_seccion .publicacion {
+    padding: 0px 15px;
+}
+
+.cuarta_seccion p {
+    text-align: center;
+}
+
+/*
     Pie de página
 */
 footer {
@@ -223,13 +372,11 @@ footer {
 }
 
 footer .delimitador {
-    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    max-width: var(--maximo_ancho) + 200px;
 }
 
 
