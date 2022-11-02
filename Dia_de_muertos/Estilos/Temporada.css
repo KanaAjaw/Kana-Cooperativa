@@ -260,6 +260,29 @@ h4 {
 .expandido {
     display: none;
 }
+.colapsado {
+    animation: notar_expansion 5s infinite 1s;
+}
+@keyframes notar_expansion {
+    0% {
+        transform: translateY(0px);
+    }
+    5% {
+        transform: translateY(15px);
+    }
+    10% {
+        transform: translateY(0px);
+    }
+    15% {
+        transform: translateY(15px);
+    }
+    20% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
 
 /*
     Segunda página
