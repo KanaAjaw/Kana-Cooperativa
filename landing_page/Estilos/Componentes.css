@@ -1,0 +1,237 @@
+
+.delimitador_ancho > header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: clamp(45px,3.4vw, var(--limite_ancho) * 0.034)
+}
+#logotipo {
+    width: clamp(100px, 13.5vw, 260px);
+}
+
+/** Botón **/
+.fuente_boton {
+    color: white;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-family: 'Inter Tight', 'Roboto', sans-serif;
+}
+.boton {
+    cursor: pointer;
+    border: none;
+    display: block;
+    border-radius: 10px;
+    text-align: center;
+    background-color:var(--azul);
+    padding: clamp(10px, 1vw, var(--limite_ancho) * 0.01);
+}
+
+
+/** Tarjetas **/
+.tarjetas {
+    width: 90%;
+    margin: auto;
+    position: relative;
+    aspect-ratio: 16 / 5;
+    background-color: red;
+}
+.tarjetas--cabezera {
+    width: 100%;
+    color: white;
+    display: block;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 0; left: 0;
+    font-size: var(--texto_chico);
+    background: rgba(26, 63, 93, 0.6);
+}
+
+
+/** Entradas de texto **/
+:root {
+    --texto_diminuto : clamp(10px, 1.8vw, 13px);
+}
+.entrada_texto {
+    display: flex;
+    flex-direction: column;
+}
+.entrada_texto--titulo {
+    width: calc( 100% - 8px);
+    display: block;
+    position: relative;
+    font-weight: 300;
+    margin-left: 8px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-size: var(--texto_diminuto);
+}
+.entrada_texto--titulo span {
+    position: absolute;
+    top: 0; right: 8px;
+    color: var(--gris_fuerte);
+}
+.entrada_texto input {
+    padding: 12px;
+    border-radius: 10px;
+    color: var(--azul_obscuro);
+    background-color: var(--gris_blanco);
+    border: 1px solid var(--gris_claro);
+}
+
+/** Etapas numeradas **/
+.etapas {
+    width: 66%;
+    margin: auto;
+    display: flex;
+    margin-bottom: 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+.etapas--numeracion {
+    width: max(10%, 30px);
+    display: flex;
+    position: relative;
+    border-radius: 50%;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    justify-content: center;
+    background-color: var(--gris_claro);
+}
+.etapas--numeracion[actual] {
+    background-color: var(--azul);
+}
+.etapas--numeracion span {
+    font-size: var(--texto_chico);
+}
+.etapas--numeracion[actual] span {
+    color: white;
+}
+.etapas--numeracion h4 {
+    position: absolute;
+    display: block;
+    width: max-content;
+    bottom: 0px; right: 0;
+    font-size: var(--texto_diminuto);
+    transform: translateY(125%);
+    transform-origin: 50% 50%;
+}
+.etapas--pipa {
+    width: 40%;
+    height: 9px;
+    background-color: var(--gris_claro);
+}
+
+
+/**
+    NOTIFICACIONES
+**/
+.lista_notificaciones {
+    z-index: 1000;
+    margin: 30px;
+    display: flex;
+    position: fixed;
+    top: 0; right: 0;
+    flex-direction: column-reverse;
+    width: clamp(280px, 26vw, 350px);
+    transform: translateX(15px) translateY(-15px);
+}
+
+.notificacion {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    align-items: center;
+    aspect-ratio: 5 / 2 ;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: var(--gris_claro);
+}
+.notificacion i {
+    font-size: clamp(20px, 3vw, 45px);
+}
+.notificacion i[class*="fa-check"] {
+    color: var(--turquesa);
+}
+.notificacion i[class*="fa-triangle"] {
+    color: var(--amarillo);
+}
+.notificacion span {
+    text-align: center;
+    font-size: var(--texto_chico);
+}
+.notificacion p {
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Inter Tight', 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: var(--texto_chico);
+}
+
+/**
+    PIÉ DE PÁGINA
+**/
+footer {
+    font-size: var(--texto_diminuto);
+}
+
+footer .delimitador_ancho {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 10px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+footer .delimitador_ancho > * {
+    margin: 15px 10px;
+}
+
+.autoria {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.autoria img {
+    width: clamp(30px, 4.6vw, var(--limite_ancho) * 0.046);
+    margin-right: 10px;
+}
+
+.legales {
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-evenly;
+}
+.legales hr {
+    height: 2px; width: var(--texto_grande);
+    transform: rotate(90deg);
+    margin: 0px min(0.8vw, var(--limite_ancho) * 0.08);
+}
+
+.servicios {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+.servicios p {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.servicios--fila {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.servicios--fila div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px min(0.8vw, var(--limite_ancho) * 0.08);
+}
+.icono_servicio {
+    color: #5A5A5A;
+    margin: 10px 0px;
+    font-size: clamp(15px, 2.5vw, var(--limite_ancho) * 0.025);
+}

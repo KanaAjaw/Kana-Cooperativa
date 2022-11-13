@@ -1,0 +1,283 @@
+/**
+    SECCIÓN PORTADA Y REGISTRO
+**/
+.delimitador_ancho {
+    margin: auto;
+    width: min(100vw, var(--limite_ancho));
+    padding: min(3vw, var(--limite_ancho) * 0.03) min(6vw, var(--limite_ancho) * 0.06);
+}
+
+/** Información registro **/
+.informacion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.informacion--registro {
+    width: 40%;
+    text-align: center;
+}
+
+.informacion--registro h1 {
+    color: var(--azul_obscuro);
+    margin-bottom: clamp(35px,3.5vw, var(--limite_ancho) * 0.035);
+}
+.informacion--registro h1 span {
+    color: var(--morado);
+}
+
+.beneficios {
+    display: inline-block;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: clamp(30px,2.5vw, var(--limite_ancho) * 0.025);
+}
+.beneficio {
+    width: 100%;
+    display: flex;
+    margin: 1vw 0px;
+}
+.beneficio i {
+    font-size: clamp(15px, 2vw, var(--limite_ancho) * 0.02);
+    display: inline-block;
+    color: var(--turquesa);
+    margin-right: clamp(25px, 2vw, var(--limite_ancho) * 0.02) ;
+}
+.beneficio p {
+    font-size: var(--texto_grande);
+    text-align: left;
+    max-width: 100%;
+    display: inline-block;
+}
+
+#registrarme--boton {
+    margin: auto;
+    margin-bottom: 15px;
+    max-width: 80%;
+}
+
+/** Instrucciones **/
+.informacion--instrucciones {
+    width: 50%;
+}
+.instruccion {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin: clamp(20px, 3vw, var(--limite_ancho) * 0.03);
+}
+.numeracion {
+    color: white;
+    font-weight: 700;
+    border-radius: 50%;
+    text-align: center;
+    aspect-ratio: 1 / 1;
+    display: inline-block;
+    font-size: var(--texto_chico);
+    background-color: var(--dorado);
+    height: clamp(30px, 2.4vw, var(--limite_ancho) * 0.024);
+    margin-right: clamp(25px, 4vw, var(--limite_ancho) * 0.04);
+    padding-top: clamp(7.5px, 0.6vw, var(--limite_ancho) * 0.006);
+}
+.instruccion--texto small {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+/**
+    SECCIÓN EXPLICACIÓN DE LANDING PAGE
+**/
+.seccion_explicacion {
+    color: white;
+    overflow-y: hidden;
+    background-color: var(--azul_obscuro);
+}
+.seccion_explicacion .delimitador_ancho {
+    position: relative;
+    padding: min(10.3vw, var(--limite_ancho) * 0.103) min(6vw, var(--limite_ancho) * 0.06);
+}
+
+.explicacion_ejemplos {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ejemplos {
+    width: 50%;
+}
+
+
+.ejemplos .tarjetas:first-child {
+    margin-bottom: min(3vw, var(--limite_ancho) * 0.03);
+}
+.tarjetas--cabezera h4 span {
+    color: var(--amarillo);
+}
+.tarjetas--cabezera i {
+    position: absolute;
+    top: 50%; right: 10px;
+    transform: translateY(-50%);
+}
+
+#conmemorativo_dia_muertos {
+    background: url("../Recursos/Banner_conmemorativo.svg")  no-repeat center;
+    background-size: auto 100%;
+}
+#ejemplo_textil {
+    background: url("../Recursos/Banner_plantilla.svg") no-repeat center;
+    background-size: auto 100%;
+}
+
+
+/** Texto de la landing page **/
+.explicacion {
+    font-size: var(--texto_grande);
+    width: 43%;
+}
+.explicacion h2 {
+    color: var(--amarillo);
+    margin-bottom: min(6.4vw, var(--limite_ancho) * 0.64);
+}
+.explicacion p {
+    padding-bottom: 2vw;
+}
+
+/**
+    FIGURAS FONDO
+**/
+/* Blob superior */
+.seccion_registro .delimitador_ancho::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0; right: 0;
+    aspect-ratio: 1040 / 493;
+    width: min(54.16vw, var(--limite_ancho) * 0.5416);
+    background: url("../Recursos/Blob_superior.svg") no-repeat center;
+    background-size: 100% auto;
+    transform: translateX(min(3vw, var(--limite_ancho) * 0.03)) translateY(max(-9.11vw, var(--limite_ancho) * -0.0911));
+}
+
+.registrarme{ position: relative;}
+.registrarme::before {
+    content: '';
+    z-index: -1;
+    display: block;
+    top: 0; left: 0;
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    width: min(18.23vw, var(--limite_ancho) * 0.1823);
+    background: url("../Recursos/Esfera.svg") no-repeat center;
+    background-size: 100% auto;
+    transform: translateX(max(-11.6vw, var(--limite_ancho) * -0.116)) translateY(max(-3.54vw, var(--limite_ancho) * -0.0354));
+}
+
+/* Blob inferior */
+.seccion_explicacion .delimitador_ancho::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0; left: 0;
+    aspect-ratio: 86 / 45;
+    width: min(54vw, var(--limite_ancho) * 0.54);
+    background: url("../Recursos/Blob_inferior.svg") no-repeat center;
+    background-size: 100% auto;
+    transform: translateX(max(-1.5vw, var(--limite_ancho) * -0.015)) translateY(min(7.45vw, var(--limite_ancho) * 0.0745));
+}
+
+.seccion_explicacion .delimitador_ancho::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0; right: 0;
+    aspect-ratio: 218 / 125;
+    width: min(22.7vw, var(--limite_ancho) * 0.227);
+    background: url("../Recursos/garigol.png") no-repeat center;
+    background-size: 100% auto;
+}
+
+
+
+@media (max-width: 800px) {
+
+    .seccion_registro header {
+        margin-bottom: 30px;
+    }
+
+    .informacion {
+        flex-direction: column;
+    }
+
+    .informacion--registro, .informacion--instrucciones, .ejemplos, .explicacion {
+        width: 100%;
+    }
+
+    .informacion--registro h1 {
+        margin-bottom: 35px;
+    }
+
+    .beneficios {
+        justify-content: space-between;
+        margin-bottom: 50px;
+        margin-top: 30px;
+    }
+
+    .informacion--instrucciones {
+        margin: 55px 0px;
+    }
+
+    #registrarme--boton {
+        max-width: 100%;
+    }
+
+    .instruccion {
+        margin: 30px 0px;
+    }
+
+    .seccion_explicacion .delimitador_ancho {
+        position: relative;
+        padding: min(5vw, var(--limite_ancho) * 0.05) min(6vw, var(--limite_ancho) * 0.06);
+    }
+
+    .explicacion_ejemplos {
+        flex-direction: column-reverse;
+    }
+
+    .explicacion h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        margin-top: 80px;
+    }
+
+    .explicacion p {
+        width: 100%;
+        margin: 15px 0px;
+        font-size: var(--texto_normal);
+    }
+
+    .ejemplos {
+        margin-top: 50px;
+        margin-bottom: 70px;
+    }
+
+    .tarjetas {
+        width: 100%;
+    }
+
+    .ejemplos .tarjetas:first-child {
+        margin-bottom: 50px
+    }
+
+    .tarjetas--cabezera {
+        transform: translateY(100%);
+        background: var(--azul);
+    }
+
+    footer .delimitador_ancho {
+        align-items: center;
+        justify-content: center;
+    }
+}

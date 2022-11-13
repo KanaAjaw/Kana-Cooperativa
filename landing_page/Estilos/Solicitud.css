@@ -1,0 +1,256 @@
+.delimitador_ancho {
+    margin: auto;
+    justify-content: center;
+    max-width: var(--limite_ancho_formulario);
+    padding: clamp(20px, 2vw, var(--limite_ancho_formulario));
+}
+
+#logotipo {
+    margin: auto;
+}
+
+
+.titulo_formulario {
+    font-weight: 400;
+    font-size: clamp(15px, 3.8vw, 32px);
+    padding-bottom: 25px;
+    text-align: center;
+    text-transform: none;
+}
+
+.descripcion_formulario {
+    font-weight: 300;
+    font-size: clamp(13px, 2.5vw, 18px);
+}
+#mensaje_obligatorios {
+    font-weight: 800;
+    font-size:var(--texto_diminuto);
+    text-align: center;
+    padding-top:15px;
+    font-family: 'Inter Tight', 'Roboto', sans-serif;
+}
+
+
+.formulario {
+    margin: 70px 0px;
+}
+.seccion_formulario--titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.seccion_formulario--titulo h2 {
+    font-weight: 300;
+    font-size: clamp(11px, 2vw, 15px);
+}
+.seccion_formulario--titulo hr{
+    height: 4px;
+    flex-grow: 2;
+    margin-left: 10px;
+}
+
+.cuadricula--generales{
+    display: grid;
+    margin: 20px 0px;
+    grid-template-areas: 
+        'REPRESENTANTE EMPRESA'
+        'GIRO GIRO'
+        'ACTIVIDADES ACTIVIDADES';
+}
+.seccion_formulario--cuadricula .entrada_texto {
+    margin: 10px 15px;
+}
+
+.cuadricula--contacto{
+    display: grid;
+    margin: 20px 0px;
+    grid-template-areas: 
+        'CORREO CELULAR'
+        'TELEFONO -';
+}
+.seccion_formulario--cuadricula .entrada_texto {
+    margin: 10px 15px;
+}
+
+/** Dudas y envio **/
+.contacto_envio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--texto_chico);
+}
+.contacto_envio > * {
+    width: 50%;
+}
+
+.contacto_dudas {
+    display: grid;
+    align-items: center;
+    grid-template-areas: 
+        'DESCRIPCION DESCRIPCION'
+        'ICONO NUMEROS';
+}
+.contacto_dudas i {
+    font-size: var(--texto_grande);
+    color: var(--azul_obscuro);
+}
+.contacto_dudas > * {
+    margin: 10px 10px;
+}
+
+.botones_envio > * {
+    width: 95%;
+    margin: 10px auto;
+}
+.botones_envio a:nth-child(2) {
+    margin-bottom: 0px;
+    cursor: not-allowed;
+    color: var(--gris_fuerte);
+    background-color: var(--gris_claro);
+}
+.botones_envio small {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+.contacto_envio .boton {
+    color: white;
+    font-size: var(--texto_normal);
+}
+
+/** Identificador Único **/
+.contenedor_id {
+    margin: 50px 0px;
+}
+.contenedor_id .entrada_texto {
+    width: 50%;
+    margin: auto;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#id_check {
+    display:none;
+    top: 1000%; left: 1000%;
+    width: 0; height: 0;
+}
+#id_check:checked + #id_unico[generado] {
+    width: 100%;
+}
+#id_check:checked + #id_unico[generado] + #id_visualizar {
+    left: calc( 100% - 8px );
+    border-radius: 0px 10px 10px 0px;
+}
+
+.contenedor_id .entrada_texto input{
+    text-align: center;
+    font-size: var(--texto_grande);
+}
+
+#id_unico {
+    width: 0%;
+    font-weight: 700;
+    position: absolute;
+    bottom: 0; left: 0;
+    transition: 0.5s width;
+    background-color: var(--amarillo);
+}
+
+#id_visualizar {
+    z-index: 10;
+    padding: 13px;
+    position: absolute;
+    bottom: 0; left: 0;
+    width: max-content;
+    display: inline-block;
+    color: var(--azul_obscuro);
+    font-size: var(--texto_grande);
+    border-radius: 10px 0px 0px 10px;
+    background-color: var(--gris_blanco);
+    border: 1.5px solid var(--gris_fuerte);
+    transition: 0.4s transform;
+    transition: 0.5s left;
+}
+#id_unico[generado] + #id_visualizar {
+    cursor: pointer;
+    background-color: var(--amarillo);
+}
+#id_unico[generado] + #id_visualizar:not([ocultar]){
+    animation: resaltar_visualizacion infinite 5s;
+}
+@keyframes resaltar_visualizacion {
+    0% {
+        transform: translateX(0%);
+    }
+    8% {
+        transform: translateX(15%);
+    }
+    10% {
+        transform: translateX(0%);
+    }
+    18% {
+        transform: translateX(15%);
+    }
+    20%{
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.contenedor_id > p {
+    width: 90%;
+    margin: auto;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Inter Tight', 'Roboto', sans-serif;
+}
+
+/** 
+    PIÉ DE PÁGINA
+**/
+footer {
+    background-color: var(--gris_claro);
+}
+footer .delimitador_ancho {
+    font-size: var(--texto_diminuto);
+}
+.icono_servicio {
+    font-size: var(--texto_normal);
+}
+
+/** Movil **/
+
+@media (max-width: 800px) {
+
+    .cuadricula--generales{
+        grid-template-areas: 
+            'REPRESENTANTE'
+            'EMPRESA'
+            'GIRO'
+            'ACTIVIDADES';
+    }
+
+    .cuadricula--contacto{
+        grid-template-areas: 
+            'CORREO'
+            'CELULAR'
+            'TELEFONO';
+    }
+
+    .contenedor_id .entrada_texto {
+        width: 85%;
+        margin: auto;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .contacto_envio {
+        flex-direction: column-reverse;
+    }
+
+    .contacto_envio > * {
+        width: 100%;
+    }
+}
