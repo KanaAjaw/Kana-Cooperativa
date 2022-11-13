@@ -96,6 +96,10 @@ function registrar_nueva_solicitud() {
 
     return true
 }
+const siguiente = document.getElementById('siguiente')
+siguiente.addEventListener('click',()=>{
+    console.log('Siguiente pulsado')
+})
 
 //
 //  Funciones auxiliares

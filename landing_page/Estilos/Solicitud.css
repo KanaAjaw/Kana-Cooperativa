@@ -102,11 +102,11 @@
     width: 95%;
     margin: 10px auto;
 }
-.botones_envio p:nth-child(4) {
+.botones_envio #siguiente {
+    color: white;
     margin-bottom: 0px;
-    cursor: not-allowed;
-    color: var(--gris_fuerte);
     background-color: var(--gris_claro);
+    color: var(--gris_fuerte);
 }
 .botones_envio small {
     width: 100%;

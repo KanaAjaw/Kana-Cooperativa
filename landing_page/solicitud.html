@@ -106,7 +106,7 @@
                             <div class="seccion_formulario--cuadricula cuadricula--contacto">
                                 <div class="entrada_texto" style="grid-area: CORREO;">
                                      <label for="correo" class="entrada_texto--titulo">Correo electrónico</label>
-                                    <input type="text" name="correo" id="correo" placeholder="i.e. hola@knittedarmy.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                                    <input type="text" name="correo" id="correo" placeholder="i.e. hola@knittedarmy.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  style="text-transform: lowercase;" required>
                                 </div>
                                 <div class="entrada_texto" style="grid-area: CELULAR;">
                                     <label for="celular" class="entrada_texto--titulo">Celular o whatsapp</label>
@@ -137,7 +137,8 @@
                                     <input type="checkbox" id="acepto_bases_servicio" required> He leído y estoy de acuerdo con las <a  target="_blank" href="https://coda.io/d/_daaeYZnrOMM/Bases-del-servicio_suFAr">Bases del servicio</a>.
                                 </div>
                                 <input type="submit" id="enviar" class="boton" value="Enviar"></input>
-                                <p id="siguiente" class="boton">Siguiente</p>
+                                <input type="checkbox" id="mensaje_personalizacion" style="display: none; position:absolute;">
+                                <a id="siguiente" class="boton">Siguiente</a>
                                 <small>Fase de personalización aún no disponible</small>
                             </div>
                         </div>
