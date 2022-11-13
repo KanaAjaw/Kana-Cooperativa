@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../Recursos/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Recursos/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Recursos/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../Recursos/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../Recursos/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="Estilos/Generales.css">
+    <link rel="stylesheet" href="Estilos/Componentes.css">
+    <link rel="stylesheet" href="Estilos/Solicitud.css">
+
+    <title>Solicitud</title>
+
+</head>
+<body>
+    <div class="contenedor">
+
+        <div class="lista_notificaciones" id="lista_notificaciones">
+            <!-- <div class="notificacion">
+                <i class="fa-solid fa-check"></i>
+                <span>La solicitud se recibió exitosamente</span>
+                <p>Visualiza tu identificador único pulsando en el icono con el ojo</p>
+            </div>
+            <div class="notificacion">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Ocurrión un error tratando de registrar la solicitud</span>
+                <p>Porfavor intenta de nuevo el envío o comunícate con nosotros</p>
+            </div> -->
+        </div>
+
+        <main class="principal">
+            <div class="delimitador_ancho">
+                <header>
+                    <img id="logotipo" src="../Recursos/logotipo_kaná.png" alt="Kaná Cooperativa">
+                </header>
+                
+                <div class="estructura_formulario">
+                    <!-- Numeración de etapas -->
+                    <div class="etapas">
+                        <div class="etapas--numeracion" actual>
+                            <span>1</span>
+                            <h4>Solicitud</h4>
+                        </div>
+                        <div class="etapas--pipa"></div>
+                        <div class="etapas--numeracion">
+                            <span>2</span>
+                            <h4>Personalización</h4>
+                        </div>
+                        <div class="etapas--pipa"></div>
+                        <div class="etapas--numeracion">
+                            <span>3</span>
+                            <h4>Página lista</h4>
+                        </div>
+                    </div>
+
+                    <h1 class="titulo_formulario">Ingresa los datos de tu empresa y medios de contacto.</h1>
+                    <p class="descripcion_formulario">Esta información nos servirá como solicitud para el servicio y permitirá generarte un identificador único.</p>
+                    <p class="descripcion_formulario" id="mensaje_obligatorios">Todos los campos deben llenarse obligatoriamente con excepción del número telefónico fijo</p>
+                    
+                    <form class="formulario" id="formulario">
+                        <!-- Datos generales -->
+                        <div class="seccion_formulario datos_generales">
+                            <header class="seccion_formulario--titulo">
+                                <h2>Datos generales</h2> <hr>
+                            </header>
+
+                            <div class="seccion_formulario--cuadricula cuadricula--generales">
+                                <div class="entrada_texto" style="grid-area: REPRESENTANTE;">
+                                    <label for="nombre-representante" class="entrada_texto--titulo">Nombre representante legal</label>
+                                    <input type="text" name="nombre-representante" id="nombre-representante" placeholder="i.e. Alfonso Carvajal" pattern="[áéíóúüñÁÉÍÓÚÜ\w\s\- ]+" required>
+                                </div>
+                                <div class="entrada_texto" style="grid-area: EMPRESA;">
+                                    <label for="nombre-empresa" class="entrada_texto--titulo">Nombre de la cooperativa o empresa</label>
+                                    <input type="text" name="nombre-empresa" id="nombre-empresa" placeholder="i.e. Knitted Army" pattern="[áéíóúüñÁÉÍÓÚÜ0-9\w\s\- ]+" required>
+                                </div>
+                                <div class="entrada_texto" style="grid-area: GIRO;">
+                                    <label for="giro-empresa" class="entrada_texto--titulo">Giro de la cooperativa o empresa</label>
+                                    <input type="text" name="giro-empresa" id="giro-empresa" placeholder="i.e. Textil Artesanales" pattern="[áéíóúüñÁÉÍÓÚÜ0-9\w\s\- ]+" required>
+                                </div>
+                                <div class="entrada_texto" style="grid-area: ACTIVIDADES;">
+                                    <label for="actividades-empresa" class="entrada_texto--titulo">Principales actividades de la cooperativa o empresa</label>
+                                    <input type="text" name="actividades-empresa" id="actividades-empresa" placeholder="i.e. En Knitted Army nos dedicamos a la elaboración de ropa y accesorios utilizando materiales naturales." pattern="[áéíóúüñÁÉÍÓÚÜ0-9,\w\s\- ]+" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Datos de contacto -->
+                        <div class="seccion_formulario datos_contacto">
+                            <header class="seccion_formulario--titulo">
+                                <h2>Datos de contacto</h2> <hr>
+                            </header>
+    
+                            <div class="seccion_formulario--cuadricula cuadricula--contacto">
+                                <div class="entrada_texto" style="grid-area: CORREO;">
+                                     <label for="correo" class="entrada_texto--titulo">Correo electrónico</label>
+                                    <input type="text" name="correo" id="correo" placeholder="i.e. hola@knittedarmy.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                                </div>
+                                <div class="entrada_texto" style="grid-area: CELULAR;">
+                                    <label for="celular" class="entrada_texto--titulo">Celular o whatsapp</label>
+                                    <input type="text" name="celular" id="celular" placeholder="i.e. 55 - 8888 8888" pattern="[0-9]{2,3}[ ]?[\-]?[ ]?[0-9]{4}[ ]?[0-9]{4}" required>
+                                </div>
+                                <div class="entrada_texto" style="grid-area: TELEFONO;">
+                                    <label for="telefono" class="entrada_texto--titulo">Teléfono fijo<span>(Opcional)</span> </label>
+                                    <input type="text" name="telefono" id="telefono" placeholder="i.e. 55 - 6666 6666" pattern="[0-9]{2,3}[ ]?[\-]?[ ]?[0-9]{4}[ ]?[0-9]{4}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contacto_envio">
+                            <div class="contacto_dudas">
+                                <p style="grid-area: DESCRIPCION;" >Para cualquier duda, problema o error durante el llenado del formulario puedes contactarnos:</p>
+                                <i class="fa-solid fa-phone" style="grid-area: ICONO; justify-self: flex-end;"></i>
+                                <div class="contado_dudas--numeros" style="grid-area: NUMEROS; justify-self:flex-start;">
+                                    <p>55 - 6614 3276</p>
+                                    <p>55 - 6554 1740</p>
+                                </div>
+                            </div>
+
+                            <div class="botones_envio">
+                                <input type="submit" id="enviar" class="boton" value="Enviar"></input>
+                                <a id="siguiente" class="boton">Siguiente</a>
+                                <small>Fase de personalización aún no disponible</small>
+                            </div>
+                        </div>
+
+                        <!-- Identificador Único -->
+                        <div class="contenedor_id">
+                            <div class="entrada_texto">
+                                <label for="id" class="entrada_texto--titulo">Identificador único</label>
+                                <input type="password" value="------" readonly>
+                                <input type="checkbox" name="id_check" id="id_check">
+                                <input type="text" name="id_unico" id="id_unico" readonly>
+                                <label for="id_check" class="fa-solid fa-eye" id="id_visualizar"></label>
+                            </div>
+                            
+                            <p>Recuerda que es de suma importancia que resguardes tu identificador único o de otra forma no podrás añadir tus archivos en la personalización</p>
+                        </div>
+
+                    </form>
+                    
+                    <!-- Numeración de etapas -->
+                    <div class="etapas">
+                        <div class="etapas--numeracion" actual>
+                            <span>1</span>
+                            <h4>Solicitud</h4>
+                        </div>
+                        <div class="etapas--pipa"></div>
+                        <div class="etapas--numeracion">
+                            <span>2</span>
+                            <h4>Personalización</h4>
+                        </div>
+                        <div class="etapas--pipa"></div>
+                        <div class="etapas--numeracion">
+                            <span>3</span>
+                            <h4>Página lista</h4>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="delimitador_ancho">
+                <div class="servicios">
+                    <div class="servicios--fila">
+                        <div><a href="https://www.kanacooperativa.com.mx/landing_page" class="icono_servicio fa-solid fa-igloo"></a>Principal</div>
+                        <div><a class="icono_servicio fa-solid fa-palette"></a>Personalización</div>
+                    </div>
+                </div>
+                <div class="legales">
+                    <a target="_blank" href="https://coda.io/d/_daaeYZnrOMM/Aviso-de-privacidad_sum0C">Aviso de Privacidad</a>
+                    <hr>
+                    <a target="_blank" href="https://coda.io/d/_daaeYZnrOMM/Bases-del-servicio_suFAr">Bases del Servicio</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="./Scripts/Solicitud.js" type="module"></script>
+    <script src="./Scripts/firebase.js" type="module"></script>
+    
+</body>
+</html>
