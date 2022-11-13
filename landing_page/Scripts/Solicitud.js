@@ -96,6 +96,30 @@ function registrar_nueva_solicitud() {
 
     return true
 }
+/* Se pasa a minúsculas el correo */
+const correo = document.getElementById('correo')
+correo.addEventListener('input', ()=>{
+    if(correo.value) correo.value = correo.value.toLowerCase()
+})
+
+
+/* Solo se permiten números */
+const celular = document.getElementById('celular')
+const telefono = document.getElementById('telefono')
+celular.addEventListener('input',()=>{ permitir_numeros(celular) })
+telefono.addEventListener('input',()=>{ permitir_numeros(telefono) })
+
+function permitir_numeros(elemento, lista_ignorados = ['-',' ']) {
+    if(elemento.value){
+        const valor_original = elemento.value.toString()
+        let valor = elemento.value
+        lista_ignorados.forEach((simbolo)=>{ valor = valor.replace(RegExp(simbolo,'g'),'') })
+
+        elemento.value = isNaN(valor) ? valor_original.substring(0,valor_original.length - 1) : elemento.value
+    }
+}
+
+
 const siguiente = document.getElementById('siguiente')
 siguiente.addEventListener('click',()=>{
     console.log('Siguiente pulsado')
