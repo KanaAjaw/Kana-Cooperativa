@@ -81,6 +81,7 @@ function registrar_nueva_solicitud() {
         id_unico.setAttribute('generado','')
         id_visualizar.setAttribute('ocultar', '')
         mostrar_notificacion(true)
+        formulario.reset()
     }catch(error){
         console.log('Error en envío de solicitud >> ' + error)
 

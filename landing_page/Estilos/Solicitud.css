@@ -102,7 +102,7 @@
     width: 95%;
     margin: 10px auto;
 }
-.botones_envio a:nth-child(2) {
+.botones_envio p:nth-child(4) {
     margin-bottom: 0px;
     cursor: not-allowed;
     color: var(--gris_fuerte);
