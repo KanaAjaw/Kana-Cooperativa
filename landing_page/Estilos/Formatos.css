@@ -1,0 +1,108 @@
+.delimitador_ancho {
+    margin: auto;
+    justify-content: center;
+    max-width: var(--limite_ancho_formulario);
+    padding: clamp(20px, 2vw, var(--limite_ancho_formulario));
+}
+
+#logotipo {
+    margin: auto;
+}
+
+
+.titulo_formulario {
+    font-weight: 400;
+    font-size: clamp(15px, 3.8vw, 32px);
+    padding-bottom: 25px;
+    text-align: center;
+    text-transform: none;
+}
+
+.descripcion_formulario {
+    font-weight: 300;
+    font-size: clamp(13px, 2.5vw, 18px);
+}
+#mensaje_obligatorios {
+    font-weight: 800;
+    font-size:var(--texto_diminuto);
+    text-align: center;
+    padding-top:15px;
+    font-family: 'Inter Tight', 'Roboto', sans-serif;
+}
+
+
+/** Instrucciones **/
+.instruccion {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin: clamp(20px, 3vw, var(--limite_ancho) * 0.03);
+}
+.numeracion {
+    color: white;
+    font-weight: 700;
+    border-radius: 50%;
+    text-align: center;
+    aspect-ratio: 1 / 1;
+    display: inline-block;
+    font-size: min(12px,var(--texto_chico));
+    background-color: var(--dorado);
+    height: clamp(30px, 2.4vw, var(--limite_ancho) * 0.019);
+    margin-right: clamp(25px, 4vw, var(--limite_ancho) * 0.04);
+    padding-top: clamp(7.5px, 0.6vw, var(--limite_ancho) * 0.006);
+}
+.instruccion--texto small {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+/** Dudas y envio **/
+.contacto_envio {
+    margin: 50px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--texto_chico);
+}
+.contacto_envio > * {
+    width: 50%;
+}
+
+.contacto_dudas {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-areas: 
+        'DESCRIPCION DESCRIPCION'
+        'ICONO-CEL NUMERO'
+        'ICONO-CORREO CORREO';
+}
+.contacto_dudas i {
+    font-size: calc(var(--texto_grande) * 1.2);
+    color: var(--azul_obscuro);
+}
+.contacto_dudas > * {
+    text-align: center;
+    margin: 10px 10px;
+}
+
+.botones_envio > * {
+    width: 95%;
+    margin: 10px auto;
+}
+.botones_envio #siguiente {
+    position: relative;
+    color: white;
+    margin-bottom: 0px;
+    color: white;
+    background-color: var(--rojo);
+}
+.botones_envio small {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+.contacto_envio .boton {
+    color: white;
+    font-size: var(--texto_normal);
+}

@@ -22,11 +22,11 @@ id_visualizar.addEventListener('click', ()=> {
 const retardo_notificacion = 8000
 const lista_notificaciones = document.getElementById('lista_notificaciones')
 const codigo_exito =
-    `<i class="fa-solid fa-check"></i>
+    `<i class="fa-solid fa-check" exito></i>
     <span>La solicitud se recibió exitosamente</span>
     <p>Visualiza tu identificador único pulsando en el icono con el ojo</p>`
 const codigo_advertencia = 
-    `<i class="fa-solid fa-triangle-exclamation"></i>
+    `<i class="fa-solid fa-triangle-exclamation" advertencia></i>
     <span>Ocurrión un error tratando de registrar la solicitud</span>
     <p>Porfavor intenta de nuevo el envío o comunícate con nosotros</p>`
 function mostrar_notificacion(exito) {
@@ -50,7 +50,7 @@ formulario.addEventListener('submit', (e)=>{
     registrar_nueva_solicitud()
     nivel_recursion = 0
 })
-function registrar_nueva_solicitud() {
+async function registrar_nueva_solicitud() {
     nivel_recursion += 1
 
     // Datos generales
@@ -66,7 +66,7 @@ function registrar_nueva_solicitud() {
     const nuevo_id = generar_id(empresa.value)
 
     try{
-        let promesa_documento = nueva_solicitud(
+        let promesa_documento = await nueva_solicitud(
             nuevo_id,
             representante.value,
             empresa.value,
@@ -122,7 +122,8 @@ function permitir_numeros(elemento, lista_ignorados = ['-',' ']) {
 
 const siguiente = document.getElementById('siguiente')
 siguiente.addEventListener('click',()=>{
-    console.log('Siguiente pulsado')
+    if(id_unico.value != '' || id_unico != null)
+        window.location.replace('https://kanacooperativa.com.mx/landing_page/personalizar.html?idu=' + id_unico.value.toString()) 
 })
 
 //

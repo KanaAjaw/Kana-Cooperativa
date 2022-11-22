@@ -1,0 +1,337 @@
+@font-face {
+    font-family: 'Ortica';
+    src: url('../Recursos/Fuentes/Ortica-Light.woff2') format('woff2'),
+    url('../Recursos/Fuentes/Ortica-Light.woff') format('woff');
+}
+@font-face {
+    font-family: 'Bolgota';
+    src: url('../Recursos/Fuentes/Bolgota.ttf') format('opentype');
+}
+
+h4 {
+    font-size: min(19px, var(--texto_grande));
+}
+
+.contenedor_plantilla {
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 20 / 13;
+}
+
+.plantilla {
+    transition: transform 200ms;
+}
+
+.plantilla_pag1 {
+    display: grid;
+    width: 100%;
+    aspect-ratio: 20 / 13;
+    grid-template-rows: 1.5fr 2fr 4fr 3.5fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        'LOGOTIPO PORTADA'
+        'TITULO PORTADA'
+        'FRASE PORTADA'
+        'REDES PORTADA'
+}
+
+.plantilla_pag2 {
+    position: relative;
+    display: grid;
+    width: 100%;
+    aspect-ratio: 20 / 13;
+    grid-template-rows: 0.5fr 4fr 0.5fr 0.5fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        'TITULO2'
+        'GALERIA'
+        'FLECHAS'
+        'INDICADORES';
+}
+
+.plantilla h1,h2 {
+    font-family: 'Bolgota', sans-serif;
+}
+.plantilla p,h3 {
+    font-family: 'Ortica', sans-serif;
+}
+.plantilla > div > *{
+    position: relative;
+    border: 1px solid #2C78BB;
+    padding: 10px 2% 10px 3.5%;
+    background-color: #80AED6;
+}
+.plantilla > div > *[paso]::after {
+    display: block;
+    z-index: 800;
+    top: 0; right: 0;
+    font-weight: 700;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    content: attr(paso);
+    vertical-align: middle;
+    width: 25px; height: 25px;
+    color: var(--azul_media_noche);
+    background-color: var(--amarillo);
+}
+
+.modal {
+    z-index: 1000;
+    width: 0px !important; height: 0px !important;
+    display: none;
+    top: 0; left: 0;
+    position: absolute !important;
+    background-color: #80AED6;
+}
+.modal[activo] {
+    display: block;
+    width: 100% !important; height: 100% !important;
+}
+
+
+.plantilla .logotipo {
+    display: flex;
+    padding-left: 15px;
+    align-items: center;
+}
+.plantilla .logotipo img {
+    max-height: 70px;
+    margin-right: 15px;
+}
+
+.logotipo .icono_agregar::after {
+    transform: translateX(-50%) translateY(25%);
+}
+.logotipo h1 {
+    font-size: calc(var(--texto_grande) * 1.5);
+}
+
+.plantilla .titulo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.plantilla .titulo h1:first-child {
+    color: var(--azul_media_noche);
+}
+.plantilla .titulo h2:nth-child(2){
+    color: white
+}
+
+.plantilla .frase p:last-child {
+    margin-top: 15px;
+}
+
+
+.plantilla .redes {
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.plantilla .redes h3 {
+    color: white;
+    padding-bottom: 5px;
+    text-transform: none;
+    display: inline-block;
+    font-size: var(--texto_normal);
+    font-family: 'Ortica', sans-serif;
+    border-bottom: 1px solid white;
+}
+.plantilla--redes_iconos {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--texto_inmenso);
+}
+.contenedor_input_enlaces {
+    width: 90%;
+    padding: 6px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+
+.imagen_placeholder {
+    display: flex;
+    border-radius: 3%;
+    position: relative;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid var(--azul_cielo);
+}
+.imagen_placeholder > *:not(.modal){
+    margin: 5px 0px;
+}
+.imagen_placeholder i {
+    font-size: min(100px,calc(var(--texto_inmenso) * 2));
+}
+.imagen_placeholder h4 {
+    font-weight: 700;
+}
+.imagen_placeholder p {
+    font-size: min(14px,var(--texto_normal));
+    font-family: 'Roboto', sans-serif;
+}
+.portada {
+    width: 100%; height: 100%;
+    border-radius: 0px ;
+}
+
+
+
+.titulo_galeria {
+    grid-area: TITULO2;
+    text-align: center;
+    padding-top: 20px;
+    border: none !important;
+}
+.titulo_galeria h4 {
+    font-family: 'Ortica', sans-serif;
+}
+
+
+.galeria {
+    grid-area: GALERIA;
+    border: none !important;
+}
+.galeria_carrusel {
+    display: flex;
+    flex-direction: row;
+    padding: 0; margin: 0;
+    min-width: 100%; height: 100%;
+    transition: transform 250ms;
+}
+.galeria_carrusel .imagen_placeholder{
+    height: 100%;
+    margin: 0px 10px;
+}
+.galeria_carrusel .imagen_placeholder:first-child {
+    aspect-ratio: 1 / 1;
+}
+.galeria_carrusel .imagen_placeholder:nth-child(2) {
+    aspect-ratio: 9 / 16;
+}
+.galeria_carrusel .imagen_placeholder:nth-child(3) {
+    aspect-ratio: 16 / 9;
+}
+.galeria_carrusel .imagen_placeholder:last-child i {
+    transform: rotate(-90deg);
+}
+
+
+.flechas_galeria {
+    border: none !important;
+    display: flex;
+    grid-area: FLECHAS;
+    align-items: center;
+    justify-content: flex-end;
+}
+.flechas_galeria i {
+    cursor: pointer;
+    margin: 0px 20px;
+    color: white;
+    font-size: min(25px,calc(var(--texto_grande) * 1.5));
+}
+
+
+.indicadores_galeria {
+    border: none !important;
+    grid-area: INDICADORES;
+    width: 100%; height: 100%;
+}
+.indicadores_galeria .indicador[activo] {
+    background-color: white;
+}
+
+
+.icono_agregar {
+    cursor: pointer;
+    position: relative;
+}
+.icono_agregar::after {
+    content: url('../Recursos/iconos/circle-plus.svg');
+    height: 40%;
+    aspect-ratio: 1 / 1;
+    transform: translateX(-50%) translateY(-80%);
+    left: 0; bottom: 0;
+    position: absolute;
+}
+
+.icono_agregar_interno {
+    z-index: 100;
+    cursor: pointer;
+    position: relative;
+}
+.icono_agregar_interno::after {
+    content: url('../Recursos/iconos/circle-plus.svg');
+    height: min(50px, 12%);
+    aspect-ratio: 1 / 1;
+    transform: translateX(-10px) translateY(-10px);
+    right: 0; bottom: 0;
+    position: absolute;
+}
+
+
+@media (max-width: 850px) {
+    .plantilla_pag1 {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            'LOGOTIPO'
+            'PORTADA'
+            'TITULO'
+            'FRASE'
+            'REDES';
+    }
+
+    .plantilla .logotipo {
+        justify-content: center;
+    }
+    .plantilla .logotipo img {
+        max-height: 50px;
+        margin-right: 15px;
+    }
+    .logotipo h1 {
+        font-size: calc(var(--texto_grande) * 1.2);
+    }
+
+    .portada {
+        aspect-ratio: 16 / 9;
+    }
+    .portada i {
+        transform: rotate(-90deg);
+    }
+
+    .plantilla .titulo {
+        padding-top: 40px;
+    }
+
+    .plantilla .redes {
+        height: 25vw;
+        min-height: 150px;
+    }
+
+    .plantilla .redes h3 {
+        font-size: var(--texto_chico);
+    }
+
+    .plantilla h2 {
+        font-size: var(--texto_grande);
+    }
+
+    .plantilla p{
+        font-size: var(--texto_chico);
+    }
+
+
+    .galeria_carrusel .imagen_placeholder:nth-child(3) {
+        aspect-ratio: 8 / 9;
+    }
+    .galeria_carrusel .imagen_placeholder:last-child i {
+        transform: rotate(0deg);
+    }
+}

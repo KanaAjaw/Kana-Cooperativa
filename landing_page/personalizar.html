@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../Recursos/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Recursos/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Recursos/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../Recursos/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../Recursos/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="Estilos/Generales.css">
+    <link rel="stylesheet" href="Estilos/Componentes.css">
+    <link rel="stylesheet" href="Estilos/Formatos.css">
+    <link rel="stylesheet" href="Estilos/Personalizar.css">
+    <link rel="stylesheet" href="Estilos/Plantilla.css">
+
+    <title>Personalizar</title>
+
+</head>
+<body>
+    <div class="contenedor">
+        <div class="lista_notificaciones" id="lista_notificaciones">
+            <!-- <div class="notificacion">
+                <i class="fa-solid fa-check"></i>
+                <span>La solicitud se recibió exitosamente</span>
+                <p>Visualiza tu identificador único pulsando en el icono con el ojo</p>
+            </div> -->
+        </div>
+
+        <main class="principal">
+            <div class="delimitador_ancho">
+                <header>
+                    <img id="logotipo" src="../Recursos/logotipo_kaná.png" alt="Kaná Cooperativa">
+                </header>
+                
+                <div class="etapas">
+                    <div class="etapas--numeracion" actual>
+                        <span>1</span>
+                        <h4>Solicitud</h4>
+                    </div>
+                    <div class="etapas--pipa" actual></div>
+                    <div class="etapas--numeracion" actual>
+                        <span>2</span>
+                        <h4>Personalización</h4>
+                    </div>
+                    <div class="etapas--pipa"></div>
+                    <div class="etapas--numeracion">
+                        <span>3</span>
+                        <h4>Página lista</h4>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="pasos_procedimiento" class="pasos_procedimiento">
+            <div class="delimitador_ancho_plantilla">
+
+                <ul class="pasos_procedimiento--instrucciones">
+                    <li class="instruccion">
+                        <span id="paso_numeracion" class="numeracion">1</span>
+                        <div class="instruccion--texto">
+                            <p id="paso_instruccion">El logotipo de tu empresa y/o nombre</p>
+                        </div>
+                    </li>
+                </ul>
+
+                
+                <div class="pasos_procedimiento--flechas">
+                    <i class="fa-solid fa-angle-left" id="paso_anterior"></i>
+                    <i class="fa-solid fa-angle-right" id="paso_siguiente"></i>
+                    <button id="guardar" class="boton">Guardar</button>
+                </div>
+
+                <div class="pasos_procedimiento--indicadores indicadores">
+                    <div class="pasos_procedimiento--indicador indicador" actual></div>
+                    <div class="pasos_procedimiento--indicador indicador"></div>
+                    <div class="pasos_procedimiento--indicador indicador"></div>
+                    <div class="pasos_procedimiento--indicador indicador"></div>
+                    <div class="pasos_procedimiento--indicador indicador"></div>
+                    <div class="pasos_procedimiento--indicador indicador"></div>
+                </div>
+            </div>     
+        </div>
+
+        <div class="delimitador_ancho_plantilla" style="margin-bottom: 15px;">
+            <div class="barra_superior">
+                <div class="acciones">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="busqueda">
+                    <i class="fa-solid fa-lock"></i>
+                    <i class="fa-solid fa-rotate-left"></i>
+                </div>
+                <div class="extras">
+                    <i class="fa-solid fa-plus"></i>
+                    <i class="fa-solid fa-copy"></i>
+                </div>
+            </div>
+            <div class="notch_superior">
+                <span>09:11</span>
+                <div class="notch"></div>
+                <div class="conectividad">
+                    <i class="fa-solid fa-battery"></i>
+                    <i class="fa-solid fa-wifi"></i>
+                </div>
+            </div>
+            <!-- Plantilla -->
+            <div class="contenedor_plantilla">
+                <div class="plantilla" segunda_pagina>
+                    <div class="plantilla_pag1">
+                        <header class="logotipo" style="grid-area: LOGOTIPO;" paso="1" >
+                            <label class="icono_agregar" for="file_logotipo">
+                                <img src="./Recursos/iconos/image.svg" alt="Logotipo placeholder" class="plantilla--icono" id="logotipo_empresa">
+                            </label>
+                            <h1 contenteditable="true" id="nombre_empresa">EDITA EL NOMBRE</h1>
+                            <div class="modal"></div>
+                        </header>
+                        <article class="titulo" style="grid-area: TITULO;" paso="2">
+                            <h2 contenteditable="true" class="titulo_landing">CAMBIA ESTA FRASE</h2>
+                            <h2 contenteditable="true" class="titulo_landing">POR TU TÍTULO</h2>
+                            <div class="modal" activo></div>
+                        </article>
+                        <article class="frase" style="grid-area: FRASE;" paso="3">
+                            <p  id="descripcion" contenteditable="true">Modifica este párrafo y añade la descripción acerca de tus productos y/o servicios de manera que sea claro para quien te visite a que se dedica tu empresa. Te aconsejamos que seas breve y no excedas a más de 2 párrafos.</p>
+                            <div class="modal" activo></div>
+                        </article>
+                        <section class="redes" style="grid-area: REDES;" paso="4">
+                            <h3>¡Añade tus redes!</h3>
+                            <div class="plantilla--redes_iconos">
+                                <i nombre="FACEBOOK" class="icono_agregar fa-brands fa-facebook-f"></i>
+                                <i nombre="TWITTER" class="icono_agregar fa-brands fa-twitter"></i>
+                                <i nombre="INSTAGRAM" class="icono_agregar fa-brands fa-instagram"></i>
+                                <i nombre="WHATSAPP" class="icono_agregar fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div class="contenedor_input_enlaces">
+                                <div class="entrada_texto entrada_texto--chico" style="grid-area: REPRESENTANTE;">
+                                    <label for="nombre-representante" class="entrada_texto--titulo" id="nombre_redes">FACEBOOK</label>
+                                    <input type="text" name="nombre-representante" id="enlace_redes" placeholder='i.e. https://facebook.com/mi_cooperativa' pattern="[áéíóúüñÁÉÍÓÚÜ\w\s\- ]+" required>
+                                </div>
+                            </div>
+                            <div class="modal" activo></div>
+                        </section>
+                        <aside class="portada" style="grid-area: PORTADA;" paso="5">
+                            <label for="file_portada" class="imagen_placeholder icono_agregar_interno" style="width:100%; height:100%;">
+                                <i class="fa-solid fa-mobile-button"></i>
+                                <h4>Agrega tu foto de portada</h4>
+                                <p>Recuerda haberla tomado en posición vertical</p>
+                                <img src="" alt="" id="imagen_portada">
+                            </label>  
+                        <div class="modal" activo></div>
+                        </aside>
+                    </div>
+                    <div class="plantilla_pag2">
+                        <div class="titulo_galeria">
+                            <h4>Agrega fotos a tu catálogo</h4>
+                        </div>
+                        <section class="galeria" paso="6">
+                            <div class="galeria_carrusel">
+                                <label for="file_galeria_1" class="imagen_placeholder icono_agregar_interno">
+                                    <i class="fa-solid fa-mobile-button"></i>
+                                    <h4>Agrega tu foto de portada</h4>
+                                    <p>Recuerda haberla tomado en posición vertical</p>
+                                    <img src="" alt="" id="imagen_galeria_1">
+                                </label>
+                                <label for="file_galeria_2" class="imagen_placeholder icono_agregar_interno">
+                                    <i class="fa-solid fa-mobile-button"></i>
+                                    <h4>Agrega tu foto de portada</h4>
+                                    <p>Recuerda haberla tomado en posición vertical</p>
+                                    <img src="" alt="" id="imagen_galeria_2">
+                                </label>
+                                <label for="file_galeria_3" class="imagen_placeholder icono_agregar_interno">
+                                    <i class="fa-solid fa-mobile-button"></i>
+                                    <h4>Agrega tu foto de portada</h4>
+                                    <p>Recuerda haberla tomado en posición horizontal</p>
+                                    <img src="" alt="" id="imagen_galeria_3">
+                                </label>
+                            </div>
+                        </section>
+                        <div class="flechas_galeria">
+                            <i class="fa-solid fa-arrow-left" anterior></i>
+                            <i class="fa-solid fa-arrow-right" siguiente></i>
+                        </div>
+                        <div class="indicadores_galeria indicadores">
+                            <div class="indicador" activo></div>
+                            <div class="indicador"></div>
+                            <div class="indicador"></div>
+                        </div>
+                        <div class="modal" activo></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="delimitador_ancho">
+                <div class="servicios">
+                    <div class="servicios--fila">
+                        <div><a href="https://www.kanacooperativa.com.mx/landing_page" class="icono_servicio fa-solid fa-igloo"></a>Principal</div>
+                        <div><a class="icono_servicio fa-solid fa-palette"></a>Personalización</div>
+                    </div>
+                </div>
+                <div class="legales">
+                    <a target="_blank" href="https://coda.io/d/_daaeYZnrOMM/Aviso-de-privacidad_sum0C">Aviso de Privacidad</a>
+                    <hr>
+                    <a target="_blank" href="https://coda.io/d/_daaeYZnrOMM/Bases-del-servicio_suFAr">Bases del Servicio</a>
+                </div>
+            </div>
+        </footer>
+
+        <div class="ventana_modal" id="modal_modo_captura">
+            <div class="mensaje">
+                <i class="fa-solid fa-hourglass-start"></i>
+                <h5>¡Ups! no podemos dejarte seguir capturando</h5>
+                <p>Regresa a la resolución --- para terminar tu personalización, o recarga la página para llenar en formato +++.</p>
+            </div>
+        </div>
+
+        <div class="ventana_modal" id="modal_identificador_unico" activo>
+            <div class="mensaje">
+                <i class="fa-solid fa-arrow-left-long" id="identificador_unico_regresar"></i>
+
+                <h5>INGRESA TU <span>IDENTIFICADOR UNICO</span></h5>
+
+                <div class="entrada_texto entrada_texto--boton_lateral" id="input_id_unico">
+                    <input type="text" id="id_unico" placeholder="KN-0387">
+                    <button class="fa-solid fa-fingerprint" id="confirmar_id_unico"></button>
+                </div>
+
+                <small>¿Olvidaste tu identificador único?</small>
+
+                <div class="asistencia">
+                    <div class="contacto">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <a href="https://wa.me/message/FA35PBTU4SKLK1">55 - 8448 1406</a>
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:kanacooperativa@gmail.com">kanacooperativa@gmail.com</a>
+                    </div>
+
+                    <strong>O</strong>
+
+                    <div class="recuperacion_correo">
+                        <label for="id_unico" class="entrada_texto--titulo">Recuperalo con tu correo registrado</label>
+                        <div class="entrada_texto entrada_texto--boton_lateral">
+                            <input type="text" id="input_recuperacion_correo">
+                            <button class="fa-solid fa-paper-plane" id="recuperacion_correo"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_logotipo">
+    <input type="file" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_portada">
+    <input type="file" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_galeria_1">
+    <input type="file" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_galeria_2">
+    <input type="file" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_galeria_3">
+
+    <script src="./Scripts/Notificaciones.js" type="module"></script>
+    <script src="./Scripts/Personalizar.js" type="module"></script>
+    <script src="./Scripts/firebase.js" type="module" ></script>
+    
+</body>
+</html>

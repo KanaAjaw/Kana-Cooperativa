@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="Estilos/Generales.css">
     <link rel="stylesheet" href="Estilos/Componentes.css">
     <link rel="stylesheet" href="Estilos/Solicitud.css">
+    <link rel="stylesheet" href="Estilos/Formatos.css">
 
     <title>Solicitud</title>
 
@@ -122,11 +123,10 @@
                         <div class="contacto_envio">
                             <div class="contacto_dudas">
                                 <p style="grid-area: DESCRIPCION;" >Para cualquier duda, problema o error durante el llenado del formulario puedes contactarnos:</p>
-                                <i class="fa-solid fa-phone" style="grid-area: ICONO; justify-self: flex-end;"></i>
-                                <div class="contado_dudas--numeros" style="grid-area: NUMEROS; justify-self:flex-start;">
-                                    <p>55 - 6614 3276</p>
-                                    <p>55 - 6554 1740</p>
-                                </div>
+                                <i class="fa-solid fa-phone" style="grid-area: ICONO-CEL;"></i>
+                                <p style="grid-area: NUMERO;">55 - 8448 1406</p>
+                                <i class="fa-solid fa-envelope" style="grid-area: ICONO-CORREO;"></i>
+                                <a style="grid-area: CORREO;" href="mailto: kanacooperativa@gmail.com">kanacooperativa@gmail.com</a>
                             </div>
 
                             <div class="botones_envio">
@@ -138,8 +138,7 @@
                                 </div>
                                 <input type="submit" id="enviar" class="boton" value="Enviar"></input>
                                 <input type="checkbox" id="mensaje_personalizacion" style="display: none; position:absolute;">
-                                <a id="siguiente" class="boton">Siguiente</a>
-                                <small>Fase de personalización aún no disponible</small>
+                                <button id="siguiente" class="boton">Siguiente</button>
                             </div>
                         </div>
 

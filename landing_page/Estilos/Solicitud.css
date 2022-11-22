@@ -1,36 +1,3 @@
-.delimitador_ancho {
-    margin: auto;
-    justify-content: center;
-    max-width: var(--limite_ancho_formulario);
-    padding: clamp(20px, 2vw, var(--limite_ancho_formulario));
-}
-
-#logotipo {
-    margin: auto;
-}
-
-
-.titulo_formulario {
-    font-weight: 400;
-    font-size: clamp(15px, 3.8vw, 32px);
-    padding-bottom: 25px;
-    text-align: center;
-    text-transform: none;
-}
-
-.descripcion_formulario {
-    font-weight: 300;
-    font-size: clamp(13px, 2.5vw, 18px);
-}
-#mensaje_obligatorios {
-    font-weight: 800;
-    font-size:var(--texto_diminuto);
-    text-align: center;
-    padding-top:15px;
-    font-family: 'Inter Tight', 'Roboto', sans-serif;
-}
-
-
 .formulario {
     margin: 70px 0px;
 }
@@ -72,66 +39,6 @@
     margin: 10px 15px;
 }
 
-/** Dudas y envio **/
-.contacto_envio {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--texto_chico);
-}
-.contacto_envio > * {
-    width: 50%;
-}
-
-.contacto_dudas {
-    display: grid;
-    align-items: center;
-    grid-template-areas: 
-        'DESCRIPCION DESCRIPCION'
-        'ICONO NUMEROS';
-}
-.contacto_dudas i {
-    font-size: var(--texto_grande);
-    color: var(--azul_obscuro);
-}
-.contacto_dudas > * {
-    margin: 10px 10px;
-}
-
-.botones_envio > * {
-    width: 95%;
-    margin: 10px auto;
-}
-.botones_envio #siguiente {
-    position: relative;
-    color: white;
-    margin-bottom: 0px;
-    /* color: white;
-    background-color: var(--rojo); */
-    color: var(--gris_fuerte);
-    background-color: var(--gris_claro);
-}
-.botones_envio small {
-    width: 100%;
-    text-align: center;
-    display: inline-block;
-}
-.contacto_envio .boton {
-    color: white;
-    font-size: var(--texto_normal);
-}
-
-
-/* .botones_envio #siguiente::before {
-    content: '';
-    width: 100%;
-    height: 200px;
-    z-index: 1000;
-    display: block;
-    position: absolute;
-    bottom: calc(100% - 5px); right: calc(100% - 5px);
-    background-color: var(--azul_obscuro);
-} */
 
 /** Identificador Único **/
 .contenedor_id {

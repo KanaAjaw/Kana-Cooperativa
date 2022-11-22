@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../Recursos/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Recursos/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Recursos/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../Recursos/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../Recursos/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="Estilos/Generales.css">
+    <link rel="stylesheet" href="Estilos/Componentes.css">
+    <link rel="stylesheet" href="Estilos/Plantilla.css">
+
+    <title>Solicitud</title>
+
+</head>
+<body>
+    <div class="contenedor--ancho">
+        <div class="contenedor_plantilla">
+            <div class="plantilla">
+                <div class="plantilla_pag1">
+                    <header class="logotipo" style="grid-area: LOGOTIPO;">
+                        <div class="icono_agregar">
+                            <img src="./Recursos/iconos/image.svg" alt="Logotipo placeholder" class="plantilla--icono">
+                        </div>
+                        <h1>Edita el Nombre</h1>
+                        <!-- <div class="modal"></div> -->
+                    </header>
+                    <article class="titulo" style="grid-area: TITULO;">
+                        <h2>Cambia esta frase</h2>
+                        <h2>por tu título</h2>
+                        <!-- <div class="modal" activo></div> -->
+                    </article>
+                    <article class="frase" style="grid-area: FRASE;">
+                        <p>Modifica este párrafo y añade la descripción acerca de tus productos y/o servicios de manera que sea claro para quien te visite a que se dedica tu empresa.</p>
+                        <p>Te recomendamos que seas breves y no excedas a más de 2 párrafos, aunque lo recomendado es que lo acotes a 1 solo.</p>
+                        <!-- <div class="modal" activo></div> -->
+                    </article>
+                    <section class="redes" style="grid-area: REDES;">
+                        <h3>¡Añade tus redes!</h3>
+                        <div class="plantilla--redes_iconos">
+                            <i class="icono_agregar fa-brands fa-facebook-f"></i>
+                            <i class="icono_agregar fa-brands fa-twitter"></i>
+                            <i class="icono_agregar fa-brands fa-instagram"></i>
+                            <i class="icono_agregar fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div class="contenedor_input_enlaces">
+                            <div class="entrada_texto entrada_texto--chico" style="grid-area: REPRESENTANTE;">
+                                <label for="nombre-representante" class="entrada_texto--titulo">Facebook</label>
+                                <input type="text" name="nombre-representante" id="nombre-representante" placeholder="i.e. Alfonso Carvajal" pattern="[áéíóúüñÁÉÍÓÚÜ\w\s\- ]+" required>
+                            </div>
+                        </div>
+                        <!-- <div class="modal" activo></div> -->
+                    </section>
+                    <aside class="portada imagen_placeholder icono_agregar_interno" style="grid-area: PORTADA;">
+                        <i class="fa-solid fa-mobile-button"></i>
+                        <h4>Agrega tu foto de portada</h4>
+                        <p>Recuerda haberla tomado en posición vertical</p>
+                        <!-- <div class="modal" activo></div> -->
+                    </aside>
+                </div>
+                <div class="plantilla_pag2">
+                    <div class="titulo_galeria">
+                        <h4>Agrega fotos a tu catálogo</h4>
+                    </div>
+                    <section class="galeria">
+                        <div class="galeria_carrusel">
+                            <div class="imagen_placeholder icono_agregar_interno">
+                                <i class="fa-solid fa-mobile-button"></i>
+                                <h4>Agrega tu foto de portada</h4>
+                                <p>Recuerda haberla tomado en posición vertical</p>
+                            </div>
+                            <div class="imagen_placeholder icono_agregar_interno">
+                                <i class="fa-solid fa-mobile-button"></i>
+                                <h4>Agrega tu foto de portada</h4>
+                                <p>Recuerda haberla tomado en posición vertical</p>
+                            </div>
+                            <div class="imagen_placeholder icono_agregar_interno">
+                                <i class="fa-solid fa-mobile-button"></i>
+                                <h4>Agrega tu foto de portada</h4>
+                                <p>Recuerda haberla tomado en posición horizontal</p>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="flechas_galeria">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                    <div class="indicadores_galeria indicadores">
+                        <div class="indicador" activo></div>
+                        <div class="indicador"></div>
+                        <div class="indicador"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

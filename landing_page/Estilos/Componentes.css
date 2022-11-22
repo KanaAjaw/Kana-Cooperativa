@@ -65,6 +65,9 @@
     text-transform: uppercase;
     font-size: var(--texto_diminuto);
 }
+.entrada_texto--chico .entrada_texto--titulo {
+    font-size: calc(var(--texto_diminuto) * 0.75 );
+}
 .entrada_texto--titulo span {
     position: absolute;
     top: 0; right: 8px;
@@ -76,6 +79,27 @@
     color: var(--azul_obscuro);
     background-color: var(--gris_blanco);
     border: 1px solid var(--gris_claro);
+}
+.entrada_texto--chico input{
+    padding: 7px;
+    border-radius: 7px;
+    font-size: calc(var(--texto_diminuto) * 0.75 );
+}
+/* Variantes */
+.entrada_texto--boton_lateral {
+    position: relative;
+}
+.entrada_texto--boton_lateral button {
+    height: 100%;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 120%;
+    top: 0; right: 0;
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    border-radius: 0px 10px 10px 0px;
+    background-color: var(--azul_cielo);
 }
 
 /** Etapas numeradas **/
@@ -97,7 +121,7 @@
     justify-content: center;
     background-color: var(--gris_claro);
 }
-.etapas--numeracion[actual] {
+.etapas > *[actual] {
     background-color: var(--azul);
 }
 .etapas--numeracion span {
@@ -126,7 +150,7 @@
     NOTIFICACIONES
 **/
 .lista_notificaciones {
-    z-index: 1000;
+    z-index: 100000;
     margin: 30px;
     display: flex;
     position: fixed;
@@ -137,6 +161,8 @@
 }
 
 .notificacion {
+    cursor: pointer;
+    position: relative;
     width: 100%;
     padding: 20px;
     display: flex;
@@ -147,16 +173,34 @@
     flex-direction: column;
     justify-content: space-evenly;
     background-color: var(--gris_claro);
+    transition: transform 250ms;
+}
+.notificacion .ocultar {
+    font-size: 16px;
+    position: absolute;
+    top: 10px; left: 10px;
+    color: var(--azul_obscuro);
 }
 .notificacion i {
     font-size: clamp(20px, 3vw, 45px);
 }
-.notificacion i[class*="fa-check"] {
+.notificacion i[exito] {
     color: var(--turquesa);
 }
-.notificacion i[class*="fa-triangle"] {
+.notificacion i[advertencia] {
     color: var(--amarillo);
 }
+.notificacion i[error] {
+    color: var(--rojo)
+}
+.notificacion .rotar {
+    animation: rotacion 1.2s linear infinite forwards ;
+}
+@keyframes rotacion {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 .notificacion span {
     text-align: center;
     font-size: var(--texto_chico);
@@ -170,10 +214,34 @@
 }
 
 /**
+    Indicadores circulos
+**/
+.indicadores{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.indicador {
+    margin: 0px 2px;
+    width: min(12px,var(--texto_normal));
+    height: min(12px,var(--texto_normal));
+    background: rgba(100, 100, 100, 0.5);
+    border-radius: 50%;
+}
+.indicador[activo] {
+    background-color: var(--amarillo);
+}
+
+
+
+/**
     PIÉ DE PÁGINA
 **/
 footer {
     font-size: var(--texto_diminuto);
+    background-color: var(--gris_claro);
+    display: relative;
+    bottom: 0px; left: 0px;
 }
 
 footer .delimitador_ancho {

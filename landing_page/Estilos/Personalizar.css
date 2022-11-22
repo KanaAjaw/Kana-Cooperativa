@@ -1,0 +1,364 @@
+.delimitador_ancho_plantilla {
+    margin: auto;
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: column;
+    max-width: min(95vw, 1200px);
+}
+.delimitador_ancho_plantilla > img {
+    width: 100%;
+    aspect-ratio: 32 / 1;
+}
+
+
+.barra_superior {
+    color: var(--azul_cielo);
+    width: 100%;
+    display: flex;
+    padding: 0px 15px;
+    align-items: center;
+    aspect-ratio: 32 / 1;
+    justify-content: space-between;
+    border-radius: 8px 8px 0px 0px;
+    border: 1px solid var(--azul_media_noche);
+    background-color: rgba(44, 120, 187, 0.6);
+}
+.barra_superior .acciones {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.barra_superior .busqueda{
+    width: 65%;
+    height: 85%;
+    display: flex;
+    padding: 0px 10px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid var(--azul_cielo);
+}
+.barra_superior .acciones div {
+    margin: 0px 2.5px;
+    aspect-ratio: 1 / 1;
+    width: var(--texto_normal);
+    height: var(--texto_normal);
+    border-radius: 50%;
+    background-color: var(--azul_cielo);
+}
+
+.notch_superior {
+    display: none;
+    width: 100%;
+    height: 30px;
+    padding: 0px 10px;
+    border-radius: 15px 15px 0px 0px;
+    color: var(--azul_cielo);
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid var(--azul_cielo);
+    background-color: rgba(44, 120, 187, 0.6);
+}
+.notch {
+    width: 75%;
+    height: 100%;
+    max-width: 210px;
+    border-radius: 0px 0px 10px 10px;
+    background-color: var(--azul_cielo);
+}
+
+.plantilla[segunda_pagina] {
+    transform: translateY(-50%);
+}
+
+.imagen_placeholder {
+    position: relative;
+}
+.imagen_placeholder > img {
+    position: absolute;
+    object-fit: cover;
+    border-radius: 10px;
+    width: 100%; height: 100%;
+    background-color: var(--azul_cielo)
+}
+.imagen_placeholder > img[src=""] {
+    display: none;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    margin: 0px;
+}
+.pasos_procedimiento {
+    width: 100vw;
+    margin-bottom: 15px;
+    z-index: 5000;
+    color: white;
+    background: rgba(20, 40, 64, 0.9);
+}
+.pasos_procedimiento .delimitador_ancho_plantilla{
+    display: grid;
+    height: max-content;
+    align-items: center;
+    grid-template-areas: 
+    'INSTRUCCIONES FLECHAS'
+    'INSTRUCCIONES INDICADORES';
+    transition: height 500ms;
+    grid-template-columns: 1fr max-content;
+}
+
+.pasos_procedimiento--ocultar {
+    padding: 0px 10px;
+    position: relative;
+    z-index: 10000;
+}
+.pasos_procedimiento--ocultar label{
+    float: right;
+    padding: 8px;
+    cursor: pointer;
+    transition: transform 250ms;
+    font-size: min(25px,calc(var(--texto_inmenso) * 0.6));
+}
+#pasos_procedimiento--checkbox:checked ~ .pasos_procedimiento--ocultar label{
+    transform: rotate(180deg);
+}
+#pasos_procedimiento--checkbox:checked ~ .delimitador_ancho_plantilla{
+    overflow: hidden;
+    height: 0px;
+}
+
+.pasos_procedimiento--instrucciones {
+    grid-area: INSTRUCCIONES;
+    font-size: min(18px,var(--texto_normal));
+}
+.pasos_procedimiento--flechas {
+    width: 100%;
+    display: flex;
+    grid-area: FLECHAS;
+    justify-self: center;
+    align-items: center;
+    justify-content: space-between;
+}
+.pasos_procedimiento--flechas i{
+    cursor: pointer;
+    padding: 20px;
+    font-size: min(30px,calc(var(--texto_inmenso) * 0.7));
+}
+.pasos_procedimiento--flechas[ultimo_paso] #paso_siguiente {
+    display: none;
+}
+.pasos_procedimiento--flechas button {
+    width: 100%;
+    max-height: 35px;
+    display: none; 
+    color: white;
+    justify-self: center;
+    margin-left: 10px;
+    background-color: var(--rojo);
+}
+.pasos_procedimiento--flechas[ultimo_paso] button {
+    display: block;
+}
+.pasos_procedimiento--indicadores{
+    grid-area: INDICADORES;
+    justify-self: flex-end;
+}
+.pasos_procedimiento--indicador[activo] {
+    background-color: var(--amarillo);
+}
+
+/** 
+    PIÉ DE PÁGINA
+**/
+footer {
+    padding-bottom: 25px;
+}
+footer .delimitador_ancho {
+    font-size: var(--texto_diminuto);
+}
+.icono_servicio {
+    font-size: var(--texto_normal);
+}
+
+
+.informacion--instrucciones {
+    margin: 30px 0px;
+}
+.instruccion--texto small{
+    margin-top: 5px;
+}
+
+
+#file_logotipo {
+    display: none;
+    width: 0; height: 0px;
+}
+
+
+.ventana_modal {
+    z-index: -1;
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    top: 0; left: 0;
+    position: fixed;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 350ms;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.ventana_modal[activo] {
+    z-index: 10000;
+    opacity: 1;
+}
+.ventana_modal .mensaje {
+    padding: 20px;
+    position: relative;
+    border-radius: 10px;
+    background-color: white;
+    width: clamp(250px,65vw,400px);
+}
+.ventana_modal .mensaje i {
+    color: var(--turquesa);
+    font-size: calc(var(--texto_inmenso) * 1.6);
+    margin-bottom: 25px;
+}
+.ventana_modal .mensaje h5 {
+    color: var(--azul_media_noche);
+    margin-bottom: 10px;
+    font-family: 'Inter', 'Roboto', sans-serif;
+    font-size: calc(var(--texto_grande) * 0.85);
+}
+.ventana_modal .mensaje p {
+    font-size: calc(var(--texto_normal) * 0.9);
+}
+
+
+#modal_identificador_unico .mensaje {
+    padding: 40px !important;
+    width: clamp(250px,70vw,550px);
+}
+#modal_identificador_unico .mensaje > i:first-child{
+    font-size: 15px;
+    position: absolute;
+    top: 5px; left: 5px;
+    padding: 5px;
+    color: var(--azul_media_noche);
+}
+#modal_identificador_unico .mensaje h5 {
+    font-family: 'Inter', 'Roboto';
+}
+#modal_identificador_unico .mensaje h5 span {
+    border-bottom: 1.5px solid var(--amarillo);
+}
+#modal_identificador_unico #input_id_unico {
+    width: 80%;
+    margin: 70px auto;
+}
+#modal_identificador_unico #input_id_unico #id_unico {
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    font-size: var(--texto_grande);
+}
+
+
+#modal_identificador_unico #input_id_unico button{
+    color: var(--azul_media_noche);
+    background-color: var(--amarillo);
+}
+
+#modal_identificador_unico .asistencia {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#modal_identificador_unico .asistencia .contacto {
+    display: grid;
+    max-width: 45%;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: auto 1fr;
+}
+#modal_identificador_unico .asistencia .contacto i {
+    font-size: calc(var(--texto_grande) * 1.2);
+    height: 100%;
+    vertical-align: middle;
+}
+#modal_identificador_unico .asistencia .contacto a {
+    margin-left: 10px;
+    text-align: center;
+}
+#modal_identificador_unico .asistencia .contacto a:last-child{
+    font-size: calc(var(--texto_normal) * 0.8);
+}
+#modal_identificador_unico .asistencia .recuperacion_correo label {
+    text-transform: none;
+}
+
+
+
+
+@media (max-width: 850px) {
+    .barra_superior {
+        display: none;
+    }
+
+    .notch_superior {
+        display: flex;
+    }
+
+    .contenedor_plantilla {
+        aspect-ratio: auto;
+        overflow: visible !important;
+        height: max-content;
+    }
+    
+    .plantilla[segunda_pagina] {
+        transform: translateY(0px);
+    }
+
+
+    .pasos_procedimiento .delimitador_ancho_plantilla{
+        padding-bottom: 15px;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            'INSTRUCCIONES '
+            'INDICADORES';
+    }
+    .pasos_procedimiento--indicadores {
+        padding: 15px 0px;
+    }
+    .pasos_procedimiento--flechas {
+        width: 100%;
+        padding: 15px;
+        bottom: 0; left: 0;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    #pasos_procedimiento--checkbox:checked ~ .delimitador_ancho_plantilla .pasos_procedimiento--flechas{
+        position: relative;
+    }
+
+    .ventana_modal .mensaje {
+        width: 95% !important;
+    }
+
+    #modal_identificador_unico .asistencia{
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+    }
+    #modal_identificador_unico .asistencia .contacto {
+        max-width: 100%;
+    }
+    #modal_identificador_unico .asistencia > * {
+        margin: 5px;
+    }
+}
