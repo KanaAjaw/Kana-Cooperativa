@@ -83,6 +83,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
     enlace_redes.innerText = ''
     modo_pantalla_actual = modo_pantalla()
     actualizar_placeholder_instrucciones()
+    // if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) || (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
+    //     alert('Es movil')
+    // }
 })
 
 const placeholder_pasos_procedimiento = document.getElementById('placeholder_pasos_procedimiento')
@@ -353,7 +356,10 @@ async function guardar_cambios(){
             break;
         case 4:
             // Portada
+            const imagenes = Object.entries(imagen_subida)
+            console.log('Imagenes',imagenes)
             for(const [resolucion,archivo] of Object.entries(imagen_subida)){
+                console.log('Resolucion',resolucion)
                 if(archivo != configuracion_almacenada[resolucion])
                     subir_imagen(idu, resolucion, archivo, imagen_portada, en_carga_imagenes, en_error_imagenes, en_exito_imagenes)
                 else mostrar_notificacion(codigo_error_cargando_imagenes)
@@ -641,6 +647,10 @@ async function proceso_redimension(archivo,elemento_imagen,resolucion_imagen,id_
     const factor = (1200000/archivo.size)/2
 
     imagen_auxiliar.src = await imagen_a_DataURL(archivo);
+
+    if(modo_captura == 0 && resolucion_imagen != 'logotipo'){
+        modo_captura = modo_pantalla()
+    }
 
     imagen_auxiliar.addEventListener("load",async () => {
         canvas = redimensionar_imagen(imagen_auxiliar,factor)
