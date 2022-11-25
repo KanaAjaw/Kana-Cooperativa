@@ -1,4 +1,5 @@
 import {nueva_solicitud} from './firebase.js'
+import { redirigir_con_idu, scroll_hacia } from './Herramientas.js'
 
 // 
 //  Comportamiento animado del campo ID Único
@@ -22,13 +23,13 @@ id_visualizar.addEventListener('click', ()=> {
 const retardo_notificacion = 8000
 const lista_notificaciones = document.getElementById('lista_notificaciones')
 const codigo_exito =
-    `<i class="fa-solid fa-check" exito></i>
-    <span>La solicitud se recibió exitosamente</span>
-    <p>Visualiza tu identificador único pulsando en el icono con el ojo</p>`
+`<i class="fa-solid fa-check" exito></i>
+<span>La solicitud se recibió exitosamente</span>
+<p>Visualiza tu identificador único pulsando en el icono con el ojo</p>`
 const codigo_advertencia = 
-    `<i class="fa-solid fa-triangle-exclamation" advertencia></i>
-    <span>Ocurrión un error tratando de registrar la solicitud</span>
-    <p>Porfavor intenta de nuevo el envío o comunícate con nosotros</p>`
+`<i class="fa-solid fa-triangle-exclamation" advertencia></i>
+<span>Ocurrión un error tratando de registrar la solicitud</span>
+<p>Porfavor intenta de nuevo el envío o comunícate con nosotros</p>`
 function mostrar_notificacion(exito) {
     // Creación de la notificación
     let nueva_notificacion = document.createElement('div')
@@ -43,6 +44,7 @@ function mostrar_notificacion(exito) {
 //
 //  Eventos del formulario
 //
+const enviar = document.getElementById('enviar')
 const formulario = document.getElementById('formulario')
 let nivel_recursion = 0
 formulario.addEventListener('submit', (e)=>{
@@ -63,9 +65,12 @@ async function registrar_nueva_solicitud() {
     const celular = formulario['celular']
     const telefono = formulario['telefono']
 
+    const id_check = document.getElementById('id_check')
+    
     const nuevo_id = generar_id(empresa.value)
 
     try{
+
         let promesa_documento = await nueva_solicitud(
             nuevo_id,
             representante.value,
@@ -80,8 +85,15 @@ async function registrar_nueva_solicitud() {
         id_unico.setAttribute('value', nuevo_id)
         id_unico.setAttribute('generado','')
         id_visualizar.setAttribute('ocultar', '')
+        
         mostrar_notificacion(true)
+        
         formulario.reset()
+        siguiente.removeAttribute('disabled')
+        enviar.setAttribute('disabled','')
+        id_check.checked = true
+
+        scroll_hacia(document.querySelector('.contenedor_id'))
     }catch(error){
         console.log('Error en envío de solicitud >> ' + error)
 
@@ -121,9 +133,10 @@ function permitir_numeros(elemento, lista_ignorados = ['-',' ']) {
 
 
 const siguiente = document.getElementById('siguiente')
+siguiente.setAttribute('disabled','')
 siguiente.addEventListener('click',()=>{
     if(id_unico.value != '' || id_unico != null)
-        window.location.replace('https://kanacooperativa.com.mx/landing_page/personalizar.html?idu=' + id_unico.value.toString()) 
+        redirigir_con_idu('personalizar_instrucciones.html',id_unico.value.toString())
 })
 
 //

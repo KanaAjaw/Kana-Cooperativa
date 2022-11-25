@@ -62,34 +62,36 @@
             </div>
         </main>
 
-        <div id="pasos_procedimiento" class="pasos_procedimiento">
-            <div class="delimitador_ancho_plantilla">
-
-                <ul class="pasos_procedimiento--instrucciones">
-                    <li class="instruccion">
-                        <span id="paso_numeracion" class="numeracion">1</span>
-                        <div class="instruccion--texto">
-                            <p id="paso_instruccion">El logotipo de tu empresa y/o nombre</p>
-                        </div>
-                    </li>
-                </ul>
-
-                
-                <div class="pasos_procedimiento--flechas">
-                    <i class="fa-solid fa-angle-left" id="paso_anterior"></i>
-                    <i class="fa-solid fa-angle-right" id="paso_siguiente"></i>
-                    <button id="guardar" class="boton">Guardar</button>
-                </div>
-
-                <div class="pasos_procedimiento--indicadores indicadores">
-                    <div class="pasos_procedimiento--indicador indicador" actual></div>
-                    <div class="pasos_procedimiento--indicador indicador"></div>
-                    <div class="pasos_procedimiento--indicador indicador"></div>
-                    <div class="pasos_procedimiento--indicador indicador"></div>
-                    <div class="pasos_procedimiento--indicador indicador"></div>
-                    <div class="pasos_procedimiento--indicador indicador"></div>
-                </div>
-            </div>     
+        <div id="placeholder_pasos_procedimiento">
+            <div id="pasos_procedimiento" class="pasos_procedimiento">
+                <div class="delimitador_ancho_plantilla">
+    
+                    <ul class="pasos_procedimiento--instrucciones">
+                        <li class="instruccion">
+                            <span id="paso_numeracion" class="numeracion">1</span>
+                            <div class="instruccion--texto">
+                                <p id="paso_instruccion"></p>
+                            </div>
+                        </li>
+                    </ul>
+    
+                    
+                    <div class="pasos_procedimiento--flechas">
+                        <i class="fa-solid fa-angle-left" id="paso_anterior"></i>
+                        <i class="fa-solid fa-angle-right" id="paso_siguiente"></i>
+                        <button id="guardar" class="boton">Guardar</button>
+                    </div>
+    
+                    <div class="pasos_procedimiento--indicadores indicadores">
+                        <div class="pasos_procedimiento--indicador indicador" actual></div>
+                        <div class="pasos_procedimiento--indicador indicador"></div>
+                        <div class="pasos_procedimiento--indicador indicador"></div>
+                        <div class="pasos_procedimiento--indicador indicador"></div>
+                        <div class="pasos_procedimiento--indicador indicador"></div>
+                        <div class="pasos_procedimiento--indicador indicador"></div>
+                    </div>
+                </div>     
+            </div>
         </div>
 
         <div class="delimitador_ancho_plantilla" style="margin-bottom: 15px;">
@@ -124,16 +126,16 @@
                             <label class="icono_agregar" for="file_logotipo">
                                 <img src="./Recursos/iconos/image.svg" alt="Logotipo placeholder" class="plantilla--icono" id="logotipo_empresa">
                             </label>
-                            <h1 contenteditable="true" id="nombre_empresa">EDITA EL NOMBRE</h1>
+                            <h1 contenteditable="true" id="nombre_empresa" llave="nombre">AGREGA TU NOMBRE</h1>
                             <div class="modal"></div>
                         </header>
                         <article class="titulo" style="grid-area: TITULO;" paso="2">
-                            <h2 contenteditable="true" class="titulo_landing">CAMBIA ESTA FRASE</h2>
-                            <h2 contenteditable="true" class="titulo_landing">POR TU TÍTULO</h2>
+                            <h2 contenteditable="true" class="titulo_landing" llave="titulo_1">CAMBIA ESTAS FRASES</h2>
+                            <h2 contenteditable="true" class="titulo_landing" llave="titulo_2">POR TU TÍTULO</h2>
                             <div class="modal" activo></div>
                         </article>
                         <article class="frase" style="grid-area: FRASE;" paso="3">
-                            <p  id="descripcion" contenteditable="true">Modifica este párrafo y añade la descripción acerca de tus productos y/o servicios de manera que sea claro para quien te visite a que se dedica tu empresa. Te aconsejamos que seas breve y no excedas a más de 2 párrafos.</p>
+                            <p  id="descripcion" contenteditable="true" llave="descripcion">Modifica este párrafo y añade la descripción acerca de tus productos y/o servicios de manera que sea claro para quien te visite a que se dedica tu empresa. Te aconsejamos que seas breve y no excedas a más de 2 párrafos.</p>
                             <div class="modal" activo></div>
                         </article>
                         <section class="redes" style="grid-area: REDES;" paso="4">
@@ -162,6 +164,7 @@
                         <div class="modal" activo></div>
                         </aside>
                     </div>
+
                     <div class="plantilla_pag2">
                         <div class="titulo_galeria">
                             <h4>Agrega fotos a tu catálogo</h4>
@@ -227,14 +230,14 @@
             </div>
         </div>
 
-        <div class="ventana_modal" id="modal_identificador_unico" activo>
+        <div class="ventana_modal modal_estilo" id="modal_identificador_unico" activo>
             <div class="mensaje">
-                <i class="fa-solid fa-arrow-left-long" id="identificador_unico_regresar"></i>
+                <i class="fa-solid fa-arrow-left-long" id="identificador_unico_regresar" style="cursor: pointer;"></i>
 
                 <h5>INGRESA TU <span>IDENTIFICADOR UNICO</span></h5>
 
                 <div class="entrada_texto entrada_texto--boton_lateral" id="input_id_unico">
-                    <input type="text" id="id_unico" placeholder="KN-0387">
+                    <input type="text" id="id_unico" placeholder="AA-2222">
                     <button class="fa-solid fa-fingerprint" id="confirmar_id_unico"></button>
                 </div>
 
@@ -254,23 +257,42 @@
                         <label for="id_unico" class="entrada_texto--titulo">Recuperalo con tu correo registrado</label>
                         <div class="entrada_texto entrada_texto--boton_lateral">
                             <input type="text" id="input_recuperacion_correo">
-                            <button class="fa-solid fa-paper-plane" id="recuperacion_correo"></button>
+                            <button class="fa-solid fa-paper-plane boton_deshabilitado" id="recuperacion_correo" disabled></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="ventana_modal modal_estilo" id="modal_finalizacion">
+            <div class="mensaje">
+                <i class="fa-solid fa-arrow-left-long" id="finalizacion_regresar" style="cursor: pointer;"></i>
+
+                <h5>¡HAS TERMINADO LA <span>PERSONALIZACIÓN</span>!</h5>
+
+                <i class="fa-solid fa-palette" style="margin-top: 10px;"></i>
+
+                <p style="font-weight: 700; font-size: var(--texto_grande);">Ahora toca esperar</p>
+                <p style="margin-top: 10px;">Tan pronto como tengamos lista tu landing page nos pondremos en contacto contigo</p>
+
+                <hr>
+
+                <p style="color: var(--azul_cielo); font-weight: 700;">Siempre puedes regresar y modificar tu personalización</p>
+            </div>
+        </div>
     </div>
 
-    <input type="file" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_logotipo">
-    <input type="file" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_portada">
-    <input type="file" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_galeria_1">
-    <input type="file" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_galeria_2">
-    <input type="file" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_galeria_3">
+    <img style="display: none;" id="auxiliar_redimension">
+    <input type="file" accept="image/*" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_logotipo">
+    <input type="file" accept="image/*" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_portada">
+    <input type="file" accept="image/*" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_galeria_1">
+    <input type="file" accept="image/*" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_galeria_2">
+    <input type="file" accept="image/*" style="display: none; width:0px; position:absolute; z-index:-1;" id="file_galeria_3">
 
     <script src="./Scripts/Notificaciones.js" type="module"></script>
     <script src="./Scripts/Personalizar.js" type="module"></script>
     <script src="./Scripts/firebase.js" type="module" ></script>
+    <script src="./Scripts/Herramientas.js" type="module" ></script>
     
 </body>
 </html>

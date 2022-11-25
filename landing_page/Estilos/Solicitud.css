@@ -80,11 +80,13 @@
 
 #id_visualizar {
     z-index: 10;
-    padding: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
     position: absolute;
     bottom: 0; left: 0;
-    width: max-content;
-    display: inline-block;
+    aspect-ratio: 1 / 1;
     color: var(--azul_obscuro);
     font-size: var(--texto_grande);
     border-radius: 10px 0px 0px 10px;
@@ -127,6 +129,11 @@
     font-weight: 700;
     text-transform: uppercase;
     font-family: 'Inter Tight', 'Roboto', sans-serif;
+}
+
+.input[disabled], button[disabled] {
+    color: var(--gris_fuerte) !important;
+    background-color: var(--gris_claro) !important;
 }
 
 /** 

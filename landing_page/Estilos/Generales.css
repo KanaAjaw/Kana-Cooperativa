@@ -88,3 +88,8 @@ body, .contenedor {
     max-height: 100vh;
     overflow: hidden;
 }
+
+.boton_deshabilitado {
+    color: var(--gris_fuerte) !important;
+    background-color: var(--gris_claro) !important;
+}

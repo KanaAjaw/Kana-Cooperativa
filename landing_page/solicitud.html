@@ -142,21 +142,21 @@
                             </div>
                         </div>
 
-                        <!-- Identificador Único -->
-                        <div class="contenedor_id">
-                            <div class="entrada_texto">
-                                <label for="id" class="entrada_texto--titulo">Identificador único</label>
-                                <input type="password" value="------" readonly>
-                                <input type="checkbox" name="id_check" id="id_check">
-                                <input type="text" name="id_unico" id="id_unico" readonly>
-                                <label for="id_check" class="fa-solid fa-eye" id="id_visualizar"></label>
-                            </div>
-                            
-                            <p>Recuerda que es de suma importancia que resguardes tu identificador único o de otra forma no podrás añadir tus archivos en la personalización</p>
-                        </div>
-
                     </form>
                     
+                    <!-- Identificador Único -->
+                    <div class="contenedor_id">
+                        <label for="id" class="entrada_texto--titulo" style="text-align: center;">Identificador único</label>
+                        <div class="entrada_texto">
+                            <input type="password" value="------" readonly>
+                            <input type="checkbox" name="id_check" id="id_check">
+                            <input type="text" name="id_unico" id="id_unico" readonly>
+                            <label for="id_check" id="id_visualizar"><i class="fa-solid fa-eye"></i></label>
+                        </div>
+                        
+                        <p>Recuerda que es de suma importancia que resguardes tu identificador único o de otra forma no podrás añadir tus archivos en la personalización</p>
+                    </div>
+
                     <!-- Numeración de etapas -->
                     <div class="etapas">
                         <div class="etapas--numeracion" actual>
@@ -201,6 +201,7 @@
     
     <script src="./Scripts/Solicitud.js" type="module"></script>
     <script src="./Scripts/firebase.js" type="module"></script>
+    <script src="./Scripts/Herramientas.js" type="module"></script>
     
 </body>
 </html>

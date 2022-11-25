@@ -34,10 +34,10 @@ export const animacion_eliminar_notificacion = (elemento,id_notificacion=0)=>{
         setTimeout(()=>{lista_notificaciones.removeChild(elemento)},300)
         return true
     }
-    
+
     elemento = document.getElementById(id_notificacion)
     if(elemento != null){
         elemento.style.transform = 'translateX(110%)'
-        setTimeout(()=>{lista_notificaciones.removeChild(elemento)},300)
+        setTimeout(()=>{lista_notificaciones.removeChild(elemento)},300) 
     }
 }

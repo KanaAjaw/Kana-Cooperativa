@@ -1,6 +1,7 @@
 import { agregar_configuracion,subir_imagen,recuperar_configuracion } from './firebase.js'
 import { mostrar_notificacion,animacion_eliminar_notificacion } from './Notificaciones.js'
 import { obtener_documento } from './firebase.js'
+import { recuperar_identificador_unico, redirigir_con_idu, scroll_hacia } from './Herramientas.js'
 
 const ancho_movil = 850
 let idu = ''
@@ -27,11 +28,11 @@ const codigo_archivo_no_imagen =
     <i class="fa-solid fa-eye-slash ocultar"></i>
     <span>El archivo elegido no es una imagen</span>
     <p>Asegurate que tus archivos tengan extensión PNG, JPG, JPEG o SVG</p>`
-const codigo_imagen_pesada = 
-    `<i class="fa-solid fa-dumbbell" exito></i>
+const codigo_redimensionando_imagen = 
+    `<i class="fa-solid fa-minimize" exito></i>
     <i class="fa-solid fa-eye-slash ocultar"></i>
     <span>La imagen elegida es muy pesada</span>
-    <p>Tu imagen es de una resolución muy grande, solo podemos guardar imágenes de máximo 1.2Mb</p>`
+    <p>Estamos redimensionando tu imagen, recuerda que tus imágenes deben pesar menos de 1.2Mb</p>`
 const codigo_imagen_empresa_faltante = (elemento_faltante)=>{
     return `<i class="fa-solid fa-copyright" advertencia></i>
     <i class="fa-solid fa-eye-slash ocultar"></i>
@@ -66,6 +67,7 @@ const codigo_error_cargando_imagenes =
 const id_unico = document.getElementById('id_unico')
 const boton_id_unico = document.getElementById('confirmar_id_unico')
 const modal_idu = document.getElementById('modal_identificador_unico')
+const regresar = document.getElementById('identificador_unico_regresar')
 
 let modo_pantalla_actual = 0
 
@@ -73,22 +75,24 @@ document.addEventListener('DOMContentLoaded', ()=>{
     indice_paso_actual = parseInt(paso_numeracion.innerText) - 1
     visualizar_paso(indice_paso_actual)
     centrar_imagen_galeria(0,false)
-    if(recuperar_identificador_unico())
+    const id_aux = recuperar_identificador_unico()
+    if(id_aux){
+        id_unico.value = id_aux
         verificar_identificador_unico()
+    }
     enlace_redes.innerText = ''
     modo_pantalla_actual = modo_pantalla()
+    actualizar_placeholder_instrucciones()
 })
-boton_id_unico.addEventListener('click',()=>{ verificar_identificador_unico() })
 
-function recuperar_identificador_unico(){
-    const parametros_url = new URLSearchParams(window.location.search)
-    if(parametros_url.has('idu')){
-        for(const [llave,valor] of parametros_url.entries()) if(llave == 'idu') idu=valor
-        id_unico.value = idu
-        return true
-    }
-    return false
+const placeholder_pasos_procedimiento = document.getElementById('placeholder_pasos_procedimiento')
+function actualizar_placeholder_instrucciones(){
+    placeholder_pasos_procedimiento.style.height = `${pasos_procedimiento.getBoundingClientRect().height}px`
 }
+
+boton_id_unico.addEventListener('click',()=>{ verificar_identificador_unico() })
+regresar.addEventListener('click',()=>{ redirigir_con_idu('personalizar_instrucciones.html',recuperar_identificador_unico()) })
+
 function validar_idu(){
     let idu_aux = id_unico.value
     if(idu_aux == ''){ mostrar_notificacion(codigo_idu_invalido('El identificador esta vacío')); return false } // La cadena es vacía
@@ -107,7 +111,7 @@ function validar_idu(){
 async function verificar_identificador_unico(){
     if(!validar_idu()) return false
 
-    const id_notificacion = (Math.random*1000).toString()
+    const id_notificacion = parseInt(Math.random()*1000).toString()
     mostrar_notificacion(codigo_idu_en_verificacion,id_notificacion)
     idu = id_unico.value.toUpperCase()
     // Se verifica con los registros que el identificador exista
@@ -147,7 +151,6 @@ async function recuperacion_configuracion_actual(){
         const referencia = await recuperar_configuracion(idu)
         if(referencia.exists()){
             const configuracion = referencia.data()
-            console.log('Datos recuperados ---',configuracion)
             if(configuracion.hasOwnProperty('nombre')) nombre_empresa.innerText = configuracion.nombre
             if(configuracion.hasOwnProperty('titulo_1')) titulos[0].innerText = configuracion.titulo_1
             if(configuracion.hasOwnProperty('titulo_2')) titulos[1].innerText = configuracion.titulo_2
@@ -170,6 +173,7 @@ async function recuperacion_configuracion_actual(){
             if(configuracion.hasOwnProperty('imagen_9:16')) imagen_galeria_2.src = configuracion['imagen_9:16']
 
             configuracion_almacenada = {...configuracion_almacenada, ...configuracion }
+            console.log('configuracion reuperada',configuracion_almacenada)
         }
     }catch(error){
         console.log('Error recuperando la configuración >>',error)
@@ -183,12 +187,12 @@ async function recuperacion_configuracion_actual(){
 //
 let indice_paso_actual = 0
 const paso_texto_instrucciones = [
-    'Sube el logotipo de tu empresa y/o añade su nombre',
+    'Añade tu logotipo pulsando en el ícono con <img src="./Recursos/iconos/circle-plus.svg" style="width: 20px; aspect-ratio: 1 / 1; object-fit:cover;"> y/o añade tu nombre <span style="color:var(--amarillo)">(Opcional)</span>',
     'Modifica el título acorde a tu cooperativa',
     'Redacta tu introducción sobre tu empresa, quienes son y lo que hacen',
-    'Ingresa los enlaces a tus redes sociales y número telefónico',
-    'Agrega tu imagen elegida para la portada',
-    'Añade las 3 imágenes que conformarán la galería' 
+    'Ingresa los enlaces a tus redes sociales y número telefónico <span style="color:var(--amarillo)">(Opcionales)</span>',
+    'Agrega o cambia tu imagen elegida para la portada pulsando en el botón <img src="./Recursos/iconos/circle-plus.svg" style="width: 20px; aspect-ratio: 1 / 1; object-fit:cover;">',
+    'Añade o cambia las 3 imágenes que conformarán la galería pulsando en cada botón <img src="./Recursos/iconos/circle-plus.svg" style="width: 20px; aspect-ratio: 1 / 1; object-fit:cover;">' 
 ]
 // Total de pasos transformado en el índice máximo
 const total_pasos = paso_texto_instrucciones.length-1
@@ -222,8 +226,8 @@ let configuracion_almacenada = {
     'imagen_16:9' : null,
 }
 let configuracion_defecto = {
-    'nombre' : 'EDITA EL NOMBRE',
-    'titulo_1' : 'CAMBIA ESTA FRASE',
+    'nombre' : 'AGREGA TU NOMBRE',
+    'titulo_1' : 'CAMBIA ESTAS FRASES',
     'titulo_2' : 'POR TU TÍTULO',
     'descripcion' : 'Modifica este párrafo y añade la descripción acerca de tus productos y/o servicios de manera que sea claro para quien te visite a que se dedica tu empresa. Te aconsejamos que seas breve y no excedas a más de 2 párrafos.',
 }
@@ -232,7 +236,7 @@ paso_siguiente.addEventListener('click',()=>{ if(indice_paso_actual < total_paso
 paso_anterior.addEventListener('click',()=>{ if(indice_paso_actual > 0) nuevo_paso() }) 
 
 const guardar = document.getElementById('guardar')
-guardar.addEventListener('click',()=>{guardar_cambios()})
+guardar.addEventListener('click',()=>{guardar_cambios(); modal_finalizacion.setAttribute('activo','')})
 
 
 function nuevo_paso(decrementar=true){
@@ -246,14 +250,18 @@ function nuevo_paso(decrementar=true){
     indice_paso_actual = indice_nuevo_paso
 }
 function visualizar_paso(indice_paso){
+    scroll_hacia(ventanas_modales[indice_paso].parentNode,150)
     ventanas_modales[indice_paso].removeAttribute('activo')
     indicadores[indice_paso].setAttribute('activo','')
     paso_numeracion.innerText = (indice_paso+1).toString()
-    paso_instruccion.innerText = paso_texto_instrucciones[indice_paso]
+    paso_instruccion.innerHTML = paso_texto_instrucciones[indice_paso]
     // Redes sociales
     if(indice_paso == 3){
         nombre_redes.innerText = 'FACEBOOK'
-        enlace_redes.value = configuracion_almacenada.redes.FACEBOOK
+        if(configuracion_almacenada.redes.FACEBOOK == undefined){
+            enlace_redes.value = ''
+            enlace_redes.placeholder = placeholders.FACEBOOK
+        }else{ enlace_redes.value = configuracion_almacenada.redes.FACEBOOK}
     }
     // Si se trata del último paso
     if(indice_paso == total_pasos){
@@ -267,7 +275,7 @@ function visualizar_paso(indice_paso){
 }
 
 
-const en_error_imagenes = ()=>{
+const en_error_imagenes = (error)=>{
     console.log('Error en guardado >>',error)
     mostrar_notificacion(codigo_error_guardando)
     console.log('Revertir configuracion')
@@ -276,11 +284,12 @@ const en_carga_imagenes = (porcentaje,id_notificacion)=>{
     if(porcentaje == 0) mostrar_notificacion(codigo_cargando_imagenes, id_notificacion) 
     if(porcentaje == 100) animacion_eliminar_notificacion(null,id_notificacion)
 }
-const en_exito_imagenes = (url, resolucion_imagen)=>{
+const en_exito_imagenes = (url, resolucion_imagen, elemento_imagen)=>{
     let imagenes_aux = {}
     imagenes_aux[resolucion_imagen.toString()] = url
     agregar_configuracion(idu, imagenes_aux, en_error_datos, ()=>{})
     configuracion_almacenada = { ...configuracion_almacenada, ...imagenes_aux }
+    elemento_imagen.src = url
     console.log('Imagen disponible en:',url)
     mostrar_notificacion(codigo_cargada_imagen) ;
 }
@@ -294,16 +303,21 @@ async function guardar_cambios(){
             // Logotipo y nombre
             // Nombre
             const nombre = nombre_empresa.innerText.toUpperCase().replace(RegExp('\n','g'),'').trim()
-            if(nombre != configuracion_defecto.nombre && nombre != configuracion_almacenada.nombre){
+            if(nombre != configuracion_almacenada.nombre){
+                if(nombre != configuracion_defecto.nombre ){
                 datos_aux.nombre = nombre
                 agregar_configuracion(idu, datos_aux, en_error_datos, ()=>{ configuracion_almacenada = { ...configuracion_almacenada, ...datos_aux } })
-            } else { mostrar_notificacion(codigo_imagen_empresa_faltante('nombre')) } 
-            // Logotipo
-            if(imagen_subida.hasOwnProperty('logotipo') && imagen_subida.logotipo != configuracion_almacenada.logotipo){
-                subir_imagen(idu, 'logotipo',imagen_subida.logotipo, en_carga_imagenes, en_error_imagenes, en_exito_imagenes)
-                limpiar_objeto(imagen_subida)
+                } else { mostrar_notificacion(codigo_imagen_empresa_faltante('nombre')) } 
             }
-            else { mostrar_notificacion(codigo_imagen_empresa_faltante('logotipo')) }
+            // Logotipo
+            if(Object.keys(imagen_subida).length != 0){
+                if(imagen_subida.hasOwnProperty('logotipo') && imagen_subida.logotipo != configuracion_almacenada.logotipo){
+                    subir_imagen(idu, 'logotipo',imagen_subida.logotipo, logotipo_empresa, en_carga_imagenes, en_error_imagenes, en_exito_imagenes)
+                    logotipo_empresa.src = configuracion_almacenada.logotipo
+                    limpiar_objeto(imagen_subida)
+                }
+                else { mostrar_notificacion(codigo_imagen_empresa_faltante('logotipo')) }
+            }else if(configuracion_almacenada.logotipo == null) { mostrar_notificacion(codigo_imagen_empresa_faltante('logotipo')) }
             break;
         case 1:
             // Titulos
@@ -328,7 +342,6 @@ async function guardar_cambios(){
         case 3:
             //Redes sociales
             datos_aux['redes'] = {}
-            console.log(redes_nuevas, configuracion_almacenada.redes)
             for(const [red,valor] of Object.entries(redes_nuevas)){
                 const red_texto = valor.replace(RegExp('\n','g'),'').trim()
                 if(red_texto != '' && red_texto != configuracion_almacenada.redes[red]) datos_aux.redes[red] = red_texto
@@ -336,14 +349,13 @@ async function guardar_cambios(){
             // Solo si ha habido modificaciones
             if(Object.keys(datos_aux.redes).length != 0){
                 agregar_configuracion(idu, datos_aux, en_error_datos, ()=>{ configuracion_almacenada = { ...configuracion_almacenada, ...datos_aux } })
-                console.log('Redes enviadas',datos_aux)
             }
             break;
         case 4:
             // Portada
             for(const [resolucion,archivo] of Object.entries(imagen_subida)){
                 if(archivo != configuracion_almacenada[resolucion])
-                    subir_imagen(idu, resolucion,archivo, en_carga_imagenes, en_error_imagenes, en_exito_imagenes)
+                    subir_imagen(idu, resolucion, archivo, imagen_portada, en_carga_imagenes, en_error_imagenes, en_exito_imagenes)
                 else mostrar_notificacion(codigo_error_cargando_imagenes)
             }
             limpiar_objeto(imagen_subida)
@@ -351,10 +363,27 @@ async function guardar_cambios(){
         case 5:
             //Imagenes galería
             for(const [resolucion,archivo] of Object.entries(imagen_subida)){
-                if(archivo != configuracion_almacenada[resolucion])
-                    subir_imagen(idu, resolucion,archivo, en_carga_imagenes, en_error_imagenes, en_exito_imagenes)
+                if(archivo != configuracion_almacenada[resolucion]){
+                    let elemento_imagen_aux = null 
+                    switch (resolucion) {
+                        case 'imagen_1:1':
+                            elemento_imagen_aux = imagen_galeria_1
+                            break
+                        case 'imagen_9:16':
+                            elemento_imagen_aux = imagen_galeria_2
+                            break
+                        case 'imagen_16:9':
+                            elemento_imagen_aux = imagen_galeria_3
+                            break
+                        case 'imagen_8:9':
+                            elemento_imagen_aux = imagen_galeria_3
+                            break
+                    }
+                    subir_imagen(idu, resolucion, archivo, elemento_imagen_aux, en_carga_imagenes, en_error_imagenes, en_exito_imagenes)
+                }
                 else mostrar_notificacion(codigo_error_cargando_imagenes)
             }
+            limpiar_objeto(imagen_subida)
             break;
     }
 }
@@ -365,70 +394,38 @@ function limpiar_objeto(objeto){
 //
 //  Modo sticky
 //
-
 let modo_sticky = false
-let pasos_procedimiento_top = pasos_procedimiento.getBoundingClientRect().top
 window.addEventListener('scroll',()=>{
     if(!modo_sticky){
-        if((document.documentElement.getBoundingClientRect().top * -1) >= pasos_procedimiento_top){
+        if(placeholder_pasos_procedimiento.getBoundingClientRect().top <= 0){
             modo_sticky = true
             pasos_procedimiento.classList.add('sticky')
         }
-    }else if((document.documentElement.getBoundingClientRect().top * -1) < pasos_procedimiento_top){
+    }else if(placeholder_pasos_procedimiento.getBoundingClientRect().top > 0){
         modo_sticky = false
         pasos_procedimiento.classList.remove('sticky')
     }
 })
 
+
 //
-//  Archivos subidos
+//  Párrafos editables
 //
-
-const file_logotipo = document.getElementById('file_logotipo')
-const file_portada = document.getElementById('file_portada')
-const file_galeria_1 = document.getElementById('file_galeria_1')
-const file_galeria_2 = document.getElementById('file_galeria_2')
-const file_galeria_3 = document.getElementById('file_galeria_3')
-
-let imagen_subida = {}
-
-file_logotipo.addEventListener('change',(evento)=>{ evento_nueva_imagen(evento, 'logotipo',logotipo_empresa) })
-file_portada.addEventListener('change',(evento)=>{ evento_nueva_imagen(evento, 'imagen_8:9',imagen_portada) })
-file_galeria_1.addEventListener('change',(evento)=>{ evento_nueva_imagen(evento, 'imagen_1:1',imagen_galeria_1) })
-file_galeria_2.addEventListener('change',(evento)=>{ evento_nueva_imagen(evento, 'imagen_9:16',imagen_galeria_2) })
-file_galeria_3.addEventListener('change',(evento)=>{ evento_nueva_imagen(evento, 'imagen_16:9',imagen_galeria_3) })
-
-function modo_pantalla(){ return document.documentElement.clientWidth <= 850 ? 1 : 2 }
-function evento_nueva_imagen(evento, resolucion_imagen, elemento_imagen){
-    let archivo = evento.target.files[0]
-    if(leer_imagen(archivo,elemento_imagen)){
-        if(modo_captura == 0 && resolucion_imagen != 'logotipo'){
-            modo_captura = modo_pantalla()
+const editables = document.querySelectorAll('*[contenteditable]')
+editables.forEach((editable)=>{
+    editable.addEventListener('focus',(evento)=>{
+        setTimeout(()=>{evento.target.innerText=''},100)
+    })
+    editable.addEventListener('blur',(evento)=>{
+        const editable_aux = evento.target
+        if(editable_aux.innerText.replace(new RegExp(' ','g'),'').replace(new RegExp(' ','g'),'') == ''){
+            if(configuracion_almacenada[editable_aux.attributes.llave.value] == '')
+                editable.innerText = configuracion_defecto[editable_aux.attributes.llave.value]
+            else
+                editable.innerText = configuracion_almacenada[editable_aux.attributes.llave.value]
         }
-        // Intercambio de imágenes según la resolución en la que se capturan
-        if(modo_captura == 1 && resolucion_imagen == 'imagen_8:9') resolucion_imagen = 'imagen_16:9'
-        if(modo_captura == 1 && resolucion_imagen == 'imagen_16:9') resolucion_imagen = 'imagen_8:9'
-        imagen_subida[resolucion_imagen] = archivo
-    } 
-}
-function leer_imagen(archivo, elemento_imagen){
-    if (archivo.type && !archivo.type.startsWith('image/')) {
-        mostrar_notificacion(codigo_archivo_no_imagen)
-        return false;
-      }
-      
-      if(archivo.size > 129999){
-        mostrar_notificacion(codigo_imagen_pesada)
-        return false
-      }
-
-      const lector = new FileReader();
-      lector.addEventListener('load', (event) => {
-        elemento_imagen.src = event.target.result;
-      });
-      lector.readAsDataURL(archivo);
-      return true
-}
+    })
+})
 
 
 //
@@ -472,7 +469,11 @@ let ultimo_sentido = 0
 
 flechas_galeria.forEach((flecha)=>{ flecha.addEventListener('click',(evento)=>{
     const flecha = evento.target
-    if(flecha.hasAttribute('siguiente')){
+    cambiar_imagen_carrusel(flecha.hasAttribute('siguiente'))
+})})
+
+function cambiar_imagen_carrusel(incrementar=true){
+    if(incrementar){
         if(indice_galeria < total_imagenes-1){
             indice_galeria += 1
             centrar_imagen_galeria(indice_galeria)
@@ -483,8 +484,7 @@ flechas_galeria.forEach((flecha)=>{ flecha.addEventListener('click',(evento)=>{
             centrar_imagen_galeria(indice_galeria,false)
         }
     }
-})})
-
+}
 function centrar_imagen_galeria(indice_imagen, sentido_derecha=true){
     const medidas =  imagenes_galeria[indice_imagen].getBoundingClientRect()
     let mover = 0
@@ -517,10 +517,10 @@ const mensajes_captura_detenida = [
     'Regresa a la resolución de escritorio para terminar tu personalización (Redimensiona tu pantalla o voltea el dispositivo).'
 ]
 
-window.addEventListener('resize',()=>{ 
+window.addEventListener('resize',()=>{
+    indice_galeria = 0; offset_galeria = 0; ultimo_sentido = 0;
     centrar_imagen_galeria(0,false)
     verificar_modo_captura()
-    pasos_procedimiento_top = pasos_procedimiento.getBoundingClientRect().top 
     cambio_imagenes_movil_escritorio()
     modo_pantalla_actual = modo_pantalla()
 })
@@ -530,6 +530,7 @@ function cambio_imagenes_movil_escritorio(){
         const imagen_portada_aux = imagen_portada.src
         imagen_portada.src = imagen_galeria_3.src
         imagen_galeria_3.src = imagen_portada_aux
+        actualizar_placeholder_instrucciones()
     }
 }
 function verificar_modo_captura(){
@@ -570,3 +571,124 @@ function ocultar_modal_modo_captura(){
     body.classList.remove('evitar_navegacion')
     modal_modo_captura.removeAttribute('activo')
 }
+
+
+//
+//  Archivos subidos
+//
+
+const file_logotipo = document.getElementById('file_logotipo')
+const file_portada = document.getElementById('file_portada')
+const file_galeria_1 = document.getElementById('file_galeria_1')
+const file_galeria_2 = document.getElementById('file_galeria_2')
+const file_galeria_3 = document.getElementById('file_galeria_3')
+
+let imagen_subida = {}
+
+file_logotipo.addEventListener('change',(evento)=>{ evento_nueva_imagen(evento, 'logotipo',logotipo_empresa) })
+file_portada.addEventListener('change',(evento)=>{ evento_nueva_imagen(evento, 'imagen_8:9',imagen_portada) })
+file_galeria_1.addEventListener('change',(evento)=>{ evento_nueva_imagen(evento, 'imagen_1:1',imagen_galeria_1) })
+file_galeria_2.addEventListener('change',(evento)=>{ evento_nueva_imagen(evento, 'imagen_9:16',imagen_galeria_2) })
+file_galeria_3.addEventListener('change',(evento)=>{ evento_nueva_imagen(evento, 'imagen_16:9',imagen_galeria_3) })
+
+function modo_pantalla(){ return document.documentElement.clientWidth <= 850 ? 1 : 2 }
+function evento_nueva_imagen(evento, resolucion_imagen, elemento_imagen){
+    let archivo = evento.target.files[0]
+    // Intercambio de imágenes según la resolución en la que se capturan
+    if(modo_pantalla() == 1 ){ 
+        if(resolucion_imagen == 'imagen_8:9') resolucion_imagen = 'imagen_16:9'
+        else if(resolucion_imagen == 'imagen_16:9') resolucion_imagen = 'imagen_8:9'
+    }
+
+    if(leer_imagen(archivo,elemento_imagen,resolucion_imagen)){
+        if(modo_captura == 0 && resolucion_imagen != 'logotipo'){
+            modo_captura = modo_pantalla()
+        }
+        if(elemento_imagen.id.includes('imagen_galeria')){cambiar_imagen_carrusel()}
+        imagen_subida[resolucion_imagen] = archivo
+    } 
+}
+function leer_imagen(archivo, elemento_imagen, resolucion_imagen){
+    if (archivo.type && !archivo.type.startsWith('image/')) {
+        mostrar_notificacion(codigo_archivo_no_imagen)
+        return false;
+    }
+    
+    if(archivo.size > 1299999){
+        const id_redimension = parseInt(Math.random()*10000).toString()
+        mostrar_notificacion(codigo_redimensionando_imagen,id_redimension)
+        proceso_redimension(archivo, elemento_imagen, resolucion_imagen, id_redimension)
+        return false
+    }
+
+    const lector = new FileReader();
+    lector.addEventListener('load', (event) => {
+        elemento_imagen.src = event.target.result;
+    });
+    lector.readAsDataURL(archivo);
+    
+    return true
+}
+
+
+//
+//  Redimensión de pantalla
+//
+const imagen_auxiliar = document.getElementById('auxiliar_redimension')
+
+async function proceso_redimension(archivo,elemento_imagen,resolucion_imagen,id_notificacion){
+    let canvas = null
+    const factor = (1200000/archivo.size)/2
+
+    imagen_auxiliar.src = await imagen_a_DataURL(archivo);
+
+    imagen_auxiliar.addEventListener("load",async () => {
+        canvas = redimensionar_imagen(imagen_auxiliar,factor)
+        elemento_imagen.src = canvas.toDataURL()
+        elemento_imagen.addEventListener('load',()=>{ console.log(`Dimensiones finales >> ${elemento_imagen.width}x${elemento_imagen.height}px`) })
+        // Si se trata de una imagen de galería se mueve a la siguiente
+        if(elemento_imagen.id.includes('imagen_galeria')){cambiar_imagen_carrusel()}
+        canvas.toBlob((blob)=>{ imagen_subida[resolucion_imagen] = blob; animacion_eliminar_notificacion(null,id_notificacion)} )
+    });
+}
+
+function imagen_a_DataURL(archivo) {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => {
+      resolve(reader.result);
+    });
+
+    reader.readAsDataURL(archivo);
+  });
+}
+
+function redimensionar_imagen(imagen_original, factor_redimension = 0.25) {
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+
+  const originalWidth = imagen_original.width;
+  const originalHeight = imagen_original.height;
+
+  const canvasWidth = originalWidth * factor_redimension;
+  const canvasHeight = originalHeight * factor_redimension;
+
+  canvas.width = canvasWidth;
+  canvas.height = canvasHeight;
+
+  context.drawImage(
+    imagen_original,
+    0,
+    0,
+    canvasWidth,
+    canvasHeight
+  );
+  return canvas
+}
+
+//
+//  Modal finalizacion
+//
+const modal_finalizacion = document.getElementById('modal_finalizacion')
+document.getElementById('finalizacion_regresar').addEventListener('click',()=>{ modal_finalizacion.removeAttribute('activo') })

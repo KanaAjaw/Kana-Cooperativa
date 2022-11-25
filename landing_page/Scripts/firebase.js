@@ -71,10 +71,10 @@ export const recuperar_configuracion = async(idu) => {
     return await getDoc(referencia_personalizacion)
 }
 
-export const subir_imagen = async (idu, nombre_imagen, archivo, en_carga, en_error, en_exito)=>{
+export const subir_imagen = async (idu, nombre_imagen, archivo, elemento_imagen, en_carga, en_error, en_exito)=>{
     const referencia_imagen = ref(storage, `${idu}/${nombre_imagen}`)
     const tarea_subida = uploadBytesResumable(referencia_imagen, archivo)
-    let id_notificacion = (Math.random*1000).toString()
+    let id_notificacion = parseInt(Math.random()*1000).toString()
 
     
     tarea_subida.on('state_changed', 
@@ -89,7 +89,7 @@ export const subir_imagen = async (idu, nombre_imagen, archivo, en_carga, en_err
         en_carga(progreso,id_notificacion)
 
       }, 
-      (error) => { en_error() }, 
-      () => { getDownloadURL(tarea_subida.snapshot.ref).then((url) => { en_exito(url, nombre_imagen.toString()) }); }
+      (error) => { en_error(error) }, 
+      () => { getDownloadURL(tarea_subida.snapshot.ref).then((url) => { en_exito(url, nombre_imagen.toString(), elemento_imagen) }); }
     );
 }

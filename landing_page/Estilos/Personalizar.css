@@ -86,15 +86,20 @@
 }
 
 .sticky {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     margin: 0px;
 }
+#placeholder_pasos_procedimiento {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
 .pasos_procedimiento {
     width: 100vw;
-    margin-bottom: 15px;
     z-index: 5000;
     color: white;
+    position: relative;
     background: rgba(20, 40, 64, 0.9);
 }
 .pasos_procedimiento .delimitador_ancho_plantilla{
@@ -237,28 +242,34 @@ footer .delimitador_ancho {
 }
 
 
-#modal_identificador_unico .mensaje {
+.modal_estilo .mensaje {
     padding: 40px !important;
     width: clamp(250px,70vw,550px);
 }
-#modal_identificador_unico .mensaje > i:first-child{
+.modal_estilo .mensaje > p {
+    font-size: var(--texto_normal);
+}
+.modal_estilo .mensaje hr {
+    margin: 15px;
+}
+.modal_estilo .mensaje > i:first-child{
     font-size: 15px;
     position: absolute;
     top: 5px; left: 5px;
     padding: 5px;
     color: var(--azul_media_noche);
 }
-#modal_identificador_unico .mensaje h5 {
+.modal_estilo .mensaje h5 {
     font-family: 'Inter', 'Roboto';
 }
-#modal_identificador_unico .mensaje h5 span {
+.modal_estilo .mensaje h5 span {
     border-bottom: 1.5px solid var(--amarillo);
 }
-#modal_identificador_unico #input_id_unico {
+.modal_estilo #input_id_unico {
     width: 80%;
     margin: 70px auto;
 }
-#modal_identificador_unico #input_id_unico #id_unico {
+.modal_estilo #input_id_unico #id_unico {
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
@@ -266,37 +277,37 @@ footer .delimitador_ancho {
 }
 
 
-#modal_identificador_unico #input_id_unico button{
+.modal_estilo #input_id_unico button{
     color: var(--azul_media_noche);
     background-color: var(--amarillo);
 }
 
-#modal_identificador_unico .asistencia {
+.modal_estilo .asistencia {
     width: 100%;
     margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-#modal_identificador_unico .asistencia .contacto {
+.modal_estilo .asistencia .contacto {
     display: grid;
     max-width: 45%;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: auto 1fr;
 }
-#modal_identificador_unico .asistencia .contacto i {
+.modal_estilo .asistencia .contacto i {
     font-size: calc(var(--texto_grande) * 1.2);
     height: 100%;
     vertical-align: middle;
 }
-#modal_identificador_unico .asistencia .contacto a {
+.modal_estilo .asistencia .contacto a {
     margin-left: 10px;
     text-align: center;
 }
-#modal_identificador_unico .asistencia .contacto a:last-child{
+.modal_estilo .asistencia .contacto a:last-child{
     font-size: calc(var(--texto_normal) * 0.8);
 }
-#modal_identificador_unico .asistencia .recuperacion_correo label {
+.modal_estilo .asistencia .recuperacion_correo label {
     text-transform: none;
 }
 
