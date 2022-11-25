@@ -1,4 +1,4 @@
-import { recuperar_identificador_unico,redirigir_con_idu } from "./IDU.js"
+import { recuperar_identificador_unico,redirigir_con_idu } from "./Herramientas.js"
 
 const siguiente = document.getElementById('siguiente')
 siguiente.addEventListener('click',()=>{ 
