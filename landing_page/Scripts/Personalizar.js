@@ -83,9 +83,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     enlace_redes.innerText = ''
     modo_pantalla_actual = modo_pantalla()
     actualizar_placeholder_instrucciones()
-    // if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) || (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
-    //     alert('Es movil')
-    // }
 })
 
 const placeholder_pasos_procedimiento = document.getElementById('placeholder_pasos_procedimiento')
@@ -123,7 +120,7 @@ async function verificar_identificador_unico(){
     if(documento.exists()){
         modal_idu.removeAttribute('activo')
         animacion_eliminar_notificacion(null,id_notificacion)
-        recuperacion_configuracion_actual()
+        recuperacion_configuracion_actual(documento.data())
     }else{
         mostrar_notificacion(codigo_idu_no_verificado)
     }
@@ -149,17 +146,22 @@ let redes_nuevas = {
     'WHATSAPP' : '',
 }
 
-async function recuperacion_configuracion_actual(){
+async function recuperacion_configuracion_actual(datos_registro){
     try{
         const referencia = await recuperar_configuracion(idu)
         if(referencia.exists()){
             const configuracion = referencia.data()
             if(configuracion.hasOwnProperty('nombre')) nombre_empresa.innerText = configuracion.nombre
+            else { nombre_empresa.innerText = datos_registro.nombre_empresa; configuracion.nombre = datos_registro.nombre_empresa }
             if(configuracion.hasOwnProperty('titulo_1')) titulos[0].innerText = configuracion.titulo_1
             if(configuracion.hasOwnProperty('titulo_2')) titulos[1].innerText = configuracion.titulo_2
             if(configuracion.hasOwnProperty('descripcion')) descripcion.innerText = configuracion.descripcion
             if(configuracion.hasOwnProperty('logotipo')) logotipo_empresa.src = configuracion.logotipo
-            if(configuracion.hasOwnProperty('redes')){ redes_nuevas = { ...redes_nuevas, ...configuracion.redes} }
+            if(configuracion.hasOwnProperty('redes')){ 
+                if(!configuracion.redes.hasOwnProperty('WHATSAPP'))
+                    configuracion.redes.WHATSAPP = datos_registro.telefono_celular
+                redes_nuevas = { ...redes_nuevas, ...configuracion.redes} 
+            }
             if(configuracion.hasOwnProperty('imagen_8:9')){
                 // Móvil
                 if(modo_pantalla() == 1) imagen_galeria_3.src = configuracion['imagen_8:9']
@@ -176,7 +178,11 @@ async function recuperacion_configuracion_actual(){
             if(configuracion.hasOwnProperty('imagen_9:16')) imagen_galeria_2.src = configuracion['imagen_9:16']
 
             configuracion_almacenada = {...configuracion_almacenada, ...configuracion }
-            console.log('configuracion reuperada',configuracion_almacenada)
+        }else{
+            nombre_empresa.innerText = datos_registro.nombre_empresa.toUpperCase()
+            redes_nuevas = { ...redes_nuevas, ...{WHATSAPP : datos_registro.telefono_celular}} 
+
+            configuracion_almacenada = {...configuracion_almacenada, ...{nombre : datos_registro.nombre_empresa.toUpperCase()} }
         }
     }catch(error){
         console.log('Error recuperando la configuración >>',error)
