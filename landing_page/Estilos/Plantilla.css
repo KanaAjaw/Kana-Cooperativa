@@ -82,7 +82,8 @@ h4 {
     display: none;
     top: 0; left: 0;
     position: absolute !important;
-    background-color: #80AED6;
+    /* background-color: #80AED6; */
+    background-color: white;
 }
 .modal[activo] {
     display: block;

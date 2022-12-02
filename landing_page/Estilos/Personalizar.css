@@ -21,7 +21,7 @@
     justify-content: space-between;
     border-radius: 8px 8px 0px 0px;
     border: 1px solid var(--azul_media_noche);
-    background-color: rgba(44, 120, 187, 0.6);
+    /* background-color: rgba(44, 120, 187, 0.6); */
 }
 .barra_superior .acciones {
     height: 100%;
@@ -141,6 +141,7 @@
     width: 100%;
     display: flex;
     grid-area: FLECHAS;
+    color: var(--amarillo);
     justify-self: center;
     align-items: center;
     justify-content: space-between;

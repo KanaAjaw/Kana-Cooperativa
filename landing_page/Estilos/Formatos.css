@@ -95,6 +95,7 @@
     color: white;
     margin-bottom: 0px;
     color: white;
+    font-size: var(--texto_normal);
     background-color: var(--rojo);
 }
 .botones_envio small {
