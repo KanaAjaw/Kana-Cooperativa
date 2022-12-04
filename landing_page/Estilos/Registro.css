@@ -3,7 +3,8 @@
 **/
 .delimitador_ancho {
     margin: auto;
-    width: min(100vw, var(--limite_ancho));
+    width: 100vw;
+    max-width: var(--limite_ancho) !important;
     padding: min(3vw, var(--limite_ancho) * 0.03) min(6vw, var(--limite_ancho) * 0.06);
 }
 
@@ -71,7 +72,9 @@
 }
 .seccion_explicacion .delimitador_ancho {
     position: relative;
-    padding: min(10.3vw, var(--limite_ancho) * 0.103) min(6vw, var(--limite_ancho) * 0.06);
+    padding-bottom: 20vw;
+    max-width: var(--ancho_maximo_movil);
+    padding: min(8.3vw, var(--limite_ancho) * 0.83) min(6vw, var(--limite_ancho) * 0.06);
 }
 
 .explicacion_ejemplos {
@@ -109,17 +112,32 @@
 
 
 /** Texto de la landing page **/
-.explicacion {
-    font-size: var(--texto_grande);
-    width: 43%;
+.explicacion_landing {
+    display: grid;
+    grid-template-areas: 
+        'TITULO TITULO'
+        'TEXTO1 TARJETA1'
+        'TARJETA2 TEXTO2'
+        'TEXTO3 TEXTO3';
 }
-.explicacion h2 {
+
+.explicacion_landing > * {
+    margin: 20px 10px;
+    z-index: 100;
+    position: relative;
+    align-self: center;
+}
+
+.explicacion_landing h2 {
     color: var(--amarillo);
-    margin-bottom: min(6.4vw, var(--limite_ancho) * 0.64);
+    text-align: center;
+    margin-bottom: 30px;
 }
-.explicacion p {
-    padding-bottom: 2vw;
+
+.explicacion_landing p {
+    font-size: calc(var(--texto_normal) * 1.15);
 }
+
 
 /**
     FIGURAS FONDO
@@ -154,6 +172,7 @@
 /* Blob inferior */
 .seccion_explicacion .delimitador_ancho::before {
     content: '';
+    z-index: 10;
     display: block;
     position: absolute;
     bottom: 0; left: 0;
@@ -175,6 +194,44 @@
     background-size: 100% auto;
 }
 
+
+.mensaje_landing {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.mensaje_landing > * {
+    margin: 20px;
+}
+
+.mensaje_landing h2 {
+    font-size: var(--texto_grande);
+    color: var(--azul_obscuro);
+}
+
+.mensaje_landing a {
+    margin: auto;
+    display: flex;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    align-items: center;
+    justify-content: center;
+    width: clamp(20px, 10%, 40px);
+    background-color: var(--azul);
+    font-size: var(--texto_grande);
+    animation: indicar 3s infinite forwards;
+}
+
+@keyframes indicar {
+    0% { transform: translateY(0px); }
+    10% { transform: translateY(15px); }
+    20% { transform: translateY(0px); }
+    30% { transform: translateY(15px); }
+    40% { transform: translateY(0px); }
+    100% { transform: translateY(0px); }
+}
 
 
 @media (max-width: 800px) {
@@ -217,26 +274,26 @@
         position: relative;
         padding: min(5vw, var(--limite_ancho) * 0.05) min(6vw, var(--limite_ancho) * 0.06);
     }
-
-    .explicacion_ejemplos {
-        flex-direction: column-reverse;
+    
+    .explicacion_landing {
+        display: grid;
+        grid-template-areas: 
+            'TITULO '
+            'TEXTO1'
+            'TARJETA1'
+            'TEXTO2'
+            'TARJETA2'
+            'TEXTO3';
     }
 
-    .explicacion h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        margin-top: 80px;
-    }
-
-    .explicacion p {
+    .explicacion_landing p {
         width: 100%;
         margin: 15px 0px;
         font-size: var(--texto_normal);
     }
 
-    .ejemplos {
+    .explicacion_landing p:not(:nth-child(2)) {
         margin-top: 50px;
-        margin-bottom: 70px;
     }
 
     .tarjetas {
