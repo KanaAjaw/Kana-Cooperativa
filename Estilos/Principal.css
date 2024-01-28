@@ -10,38 +10,6 @@ body {
     background-size: cover;
 }
 
-.sc {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200%;
-    height: 100%;
-}
-.sc-1 {
-    background: url('../Recursos/sc-1.svg') no-repeat center;
-    background-size: 100% 100%;
-    top: -5px;
-    animation: sc1 4s linear infinite;
-}
-.sc-2 {
-    background: url('../Recursos/sc-2.svg') no-repeat center;
-    background-size:contain;
-    top: -5px;
-    animation: sc2 2.5s linear infinite;
-}
-.sc-3 {
-    background: url('../Recursos/sc-3.svg') no-repeat center;
-    background-size:contain;
-    top: 0;
-    animation: sc1 3.5s linear 2s infinite;
-}
-.sc-4 {
-    background: url('../Recursos/sc-4.svg') no-repeat center;
-    background-size:contain;
-    animation: sc2 3s linear infinite;
-    top: -5px;
-}
-
 @keyframes sc1 {
     0% { transform: translateX(-50%); }
     20% { transform: translateX(calc(-50% - 10px)); }
